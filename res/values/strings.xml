@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TourApp!</string>
+    <string name="app_name">TourApp</string>
+    <string name="button_on_location">On Campus</string>
+    <string name="button_off_location">Off Campus</string>
+    <string name="welcome">Greetings from Mills!  Please choose one:</string>
+    <string name="guidedtourwelcome">Guided Tour</string>
+    <string name="divisionactivitywelcome">Choose a Department</string>
+    <string name="division1welcome">Office of Undergraduate Admission</string>
+    <string name="on_location_start">You are on campus! Yay!</string>
+    <string name="off_location_start">You are not on campus.  You should come visit!</string>
+    <string name="button_guided_tour">Show Me Around</string>
+    <string name="button_division_activity">Learn About Mills</string>
+    <string name="button_division_1">Apply</string>
+</resources>
