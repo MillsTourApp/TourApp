@@ -10,5 +10,11 @@
     android:layout_height="wrap_content" 
     android:text="@string/divisionactivitywelcome"
     />
+    
+    <TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/text_view"
+    />
      
 </LinearLayout>
