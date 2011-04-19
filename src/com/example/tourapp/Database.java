@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+//anna adds a silly comment to test git
 public class Database extends SQLiteOpenHelper{
 	
 	private Context myContext;
