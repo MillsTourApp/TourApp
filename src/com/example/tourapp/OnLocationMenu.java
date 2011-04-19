@@ -18,7 +18,7 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 		findViewById(R.id.button_division_1).setOnClickListener(this);
 	}//end method onCreate
 
-
+	@Override
 	public void onClick(View v) {
 		switch (v.getId()){
 		case R.id.button_guided_tour:
