@@ -24,7 +24,7 @@ public class DivisionDatabase extends SQLiteOpenHelper{
 		//new try from http://groups.google.com/group/android-developers/browse_thread/thread/b09066ecbcb0c434
 		//http://www.coderanch.com/t/498137/Android/Mobile/Reading-text-file-assets-folders
 		
-		AssetManager myAssetManager = myContext.getResources().getAssets();
+		AssetManager myAssetManager = myContext.getAssets();
 		try{
 			InputStream is = myAssetManager.open("experimental_file.txt");
 			byte[] bytes = new byte[is.available()];
