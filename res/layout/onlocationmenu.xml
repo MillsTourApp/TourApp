@@ -9,8 +9,8 @@
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	 />    
-    <Button android:id="@+id/button_division_activity"
-    	android:text="@string/button_division_activity"
+    <Button android:id="@+id/button_division_list"
+    	android:text="@string/button_division_list"
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	 />   

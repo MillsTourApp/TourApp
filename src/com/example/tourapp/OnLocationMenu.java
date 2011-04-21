@@ -14,7 +14,7 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 		setContentView(R.layout.onlocationmenu);
 
 		findViewById(R.id.button_guided_tour).setOnClickListener(this);
-		findViewById(R.id.button_division_activity).setOnClickListener(this);
+		findViewById(R.id.button_division_list).setOnClickListener(this);
 		findViewById(R.id.button_division_1).setOnClickListener(this);
 	}//end method onCreate
 
@@ -25,8 +25,8 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 			Intent i1 = new Intent (this, GuidedTour.class);
 			startActivity(i1);
 			break;
-		case R.id.button_division_activity:
-			Intent i2 = new Intent (this, DivisionActivity.class);
+		case R.id.button_division_list:
+			Intent i2 = new Intent (this, DivisionList.class);
 			startActivity(i2);
 			break;
 		case R.id.button_division_1:

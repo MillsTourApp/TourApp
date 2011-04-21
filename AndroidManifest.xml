@@ -20,7 +20,7 @@
                 <action android:name="android.intent.action.GUIDEDTOUR" />
                 <category android:name="android.intent.category.LAUNCHER" />
         </activity>
-        <activity android:name=".DivisionActivity">
+        <activity android:name="DivisionList">
                 <action android:name="android.intent.action.DIVISIONACTIVITY" />
                 <category android:name="android.intent.category.LAUNCHER" />
         </activity>
