@@ -21,10 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
         </activity>
         <activity android:name="DivisionList">
-                <action android:name="android.intent.action.DIVISIONACTIVITY" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".Division1">
+        <activity android:name="Division">
                 <action android:name="android.intent.action.DIVISION1" />
                 <category android:name="android.intent.category.LAUNCHER" />
         </activity>

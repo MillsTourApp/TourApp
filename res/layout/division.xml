@@ -5,9 +5,14 @@
     android:layout_height="fill_parent"
     >
     <TextView  
+    android:id="@+id/division_name"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="@string/division1welcome"
     />
+        <Button android:id="@+id/button_division_list"
+    	android:text="@string/button_division_list"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	 />
      
 </LinearLayout>

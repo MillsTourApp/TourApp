@@ -7,7 +7,7 @@
     <string name="welcome">Greetings from Mills!  Please choose one:</string>
     <string name="guidedtourwelcome">Guided Tour</string>
     <string name="divisionactivitywelcome">Choose a Department</string>
-    <string name="division1welcome">Office of Undergraduate Admission</string>
+    <string name="divisionwelcome">This is an individual division page.</string>
     <string name="on_location_start">You are on campus! Yay!</string>
     <string name="off_location_start">You are not on campus.  You should come visit!</string>
     <string name="button_guided_tour">Show Me Around</string>

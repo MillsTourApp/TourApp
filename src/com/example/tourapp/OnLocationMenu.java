@@ -30,7 +30,7 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 			startActivity(i2);
 			break;
 		case R.id.button_division_1:
-			Intent i3 = new Intent (this, Division1.class);
+			Intent i3 = new Intent (this, Division.class);
 			startActivity(i3);
 			break;
 		}//end switch statement

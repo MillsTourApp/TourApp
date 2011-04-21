@@ -1,6 +1,7 @@
 package com.example.tourapp;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -9,39 +10,40 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class DivisionList extends ListActivity {
-	private Database database;
+	private DivisionDatabase database;
 	private static String TABLE_NAME = "Place";
 	private static String[] FROM = {"idPlace", "name"};
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//setContentView(R.layout.divisionlist);
 
-		database = new Database(this);
+		database = new DivisionDatabase(this);
 		Cursor cursor = getPlaces();
-		//StringBuilder places = new StringBuilder ("");
-		String[] arrayOfPlaceNames = makeListOfPlaceNames(cursor);
+		final String[] arrayOfPlaceNames = makeListOfPlaceNames(cursor);
 
-		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayOfPlaceNames));
+		setListAdapter(new ArrayAdapter<String>(this, R.layout.divisionlist, R.id.divisiontextview, arrayOfPlaceNames));
 
-		ListView lv = getListView();
+		final ListView lv = getListView();
 		lv.setTextFilterEnabled(true);
 
 		lv.setOnItemClickListener(new OnItemClickListener() {
+
+			String divisionName;
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// When clicked, show a toast with the TextView text
-				Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-			}
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				divisionName = lv.getItemAtPosition(position).toString();
+				Intent intent = new Intent().setClass(DivisionList.this, Division.class);
+				intent.putExtra("dName", divisionName);
+				startActivity(intent);
+			}//end onItemClick
 		});
 	}//end onCreate method
-	
-	//
+
 	private Cursor getPlaces(){
 		SQLiteDatabase db = database.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_NAME, FROM, null, null, null, null, null, null);

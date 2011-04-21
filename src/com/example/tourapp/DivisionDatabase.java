@@ -8,12 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-public class Database extends SQLiteOpenHelper{
+public class DivisionDatabase extends SQLiteOpenHelper{
 	
 	private Context myContext;
 	
 	//constructor
-	public Database(Context ctx){
+	public DivisionDatabase(Context ctx){
 		super(ctx, "db", null, 1);
 		this.myContext = ctx;
 	}// end constructor
