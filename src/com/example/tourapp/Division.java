@@ -1,5 +1,4 @@
 package com.example.tourapp;
-//adding silly comment to test branching
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
