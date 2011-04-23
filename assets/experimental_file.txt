@@ -1,5 +1,5 @@
-CREATE TABLE Place (_id integer primary key autoincrement, idPlace int, name text, lon int, lat int, description text, directionsFromPrevious text, directionsToNext);
-	insert into Place(idPlace, name, lon, lat, description, directionsFromPrevious, directionsToNext) values ("46", "Mills Hall", "754", "453", "As you entered building.", "Mills Hall is near the Oval", "Campanil is on other side of oval");
-	insert into Place(idPlace, name, lon, lat, description, directionsFromPrevious, directionsToNext) values ("47", "Clock Tower", "538", "343", "Made by strong female architect", "Campanil is on other side of oval", "CPM is behind campanil");
-	insert into Place(idPlace, name, lon, lat, description, directionsFromPrevious, directionsToNext) values ("48", "CPM", "123", "243", "Old, ugly building", "CPM is behind the oval", "Education building is nearby");
-	insert into Place(idPlace, name, lon, lat, directionsFromPrevious, directionsToNext) values ("48", "CPM", "123", "243", "CPM is behind the oval", "Education building is nearby");
+CREATE TABLE Place (_id integer primary key autoincrement, name text, lon integer, lat integer, description text, directionsFromPrevious text, directionsToNext);
+INSERT INTO Place(name, lon, lat, description, directionsFromPrevious, directionsToNext) values ('Clock Tower', 538, 343, 'Made by strong female architect', 'Campanil is on other side of oval', 'CPM is behind campanil');
+INSERT INTO Place(name, lon, lat, description, directionsFromPrevious, directionsToNext) values ('CPM', 123, 243, 'Old, ugly building', 'CPM is behind the oval', 'Education building is nearby');
+INSERT INTO Place(name, lon, lat, description, directionsFromPrevious, directionsToNext) values ('Mills Mills Hall Hall', 754, 453, 'This is a Mills Hall description', 'Mills Hall is near the Oval', 'Campanil is on other side of oval');
+INSERT INTO Place(name, lon, lat, description, directionsFromPrevious, directionsToNext) values ('CPM', 123, 243, 'CPM Description', 'CPM is behind the oval', 'Education building is nearby');
