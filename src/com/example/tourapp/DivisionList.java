@@ -12,16 +12,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class DivisionList extends ListActivity {
-	private DivisionDatabase database;
-	//private static String TABLE_NAME = "Place";
+	private Database database;
+	private static String TABLE_NAME = "Place";
 	private static String[] FROM = {"name", "description", "directionsFromPrevious", "directionsToNext"};
-
-
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.divisionlist);
-		database = new DivisionDatabase(this);
+		database = new Database(this, "division.txt", "division.db");
 		Cursor cursor = getDivisions();
 		final String[] arrayOfDivisionNames = makeListOfDivisionNames(cursor, 0);
 		final String[] arrayOfDivisionDescriptions = makeListOfDivisionNames(cursor,1);
@@ -48,7 +46,7 @@ public class DivisionList extends ListActivity {
 
 	private Cursor getDivisions(){
 		SQLiteDatabase db = database.getReadableDatabase();
-		Cursor cursor = db.query("Place", FROM, null, null, null, null, null, null);
+		Cursor cursor = db.query(TABLE_NAME, FROM, null, null, null, null, null, null);
 		startManagingCursor(cursor);
 		return cursor;
 	}//end getPlaces method

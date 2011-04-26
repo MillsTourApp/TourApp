@@ -1,9 +1,8 @@
 package com.example.tourapp;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 public class Division extends Activity{
@@ -14,6 +13,7 @@ public class Division extends Activity{
 		
 		TextView name = (TextView) findViewById(R.id.division_name);
 		TextView description = (TextView) findViewById(R.id.division_descript);
+		description.setMovementMethod(new ScrollingMovementMethod());
 		TextView dirToNext = (TextView) findViewById(R.id.divisiondirtonext);
 		TextView dirFromPrev = (TextView) findViewById(R.id.divisiondirfromprev);
 
