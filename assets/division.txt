@@ -1,4 +1,4 @@
-CREATE TABLE Place (_id integer primary key autoincrement, name text, lon integer, lat integer, description text, directionsFromPrevious text, directionsToNext);
+CREATE TABLE Place (_id integer primary key autoincrement, name text, lon integer, lat integer, description text, directionsFromPrevious text, directionsToNext text);
 INSERT INTO Place(name, lon, lat, description, directionsFromPrevious, directionsToNext) values ('Clock Tower', 538, 343, 'Made by strong female architect', 'Campanil is on other side of oval', 'CPM is behind campanil');
 INSERT INTO Place(name, lon, lat, description, directionsFromPrevious, directionsToNext) values ('CPM', 123, 243, 'Old, ugly building', 'CPM is behind the oval', 'Education building is nearby');
 INSERT INTO Place(name, lon, lat, description, directionsFromPrevious, directionsToNext) values ('Mills Mills Hall Hall', 754, 453, 'This is a Mills Hall description', 'Mills Hall is near the Oval', 'Campanil is on other side of oval');
