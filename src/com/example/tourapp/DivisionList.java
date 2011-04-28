@@ -20,7 +20,10 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 	private static String[] FROM = {"_id", "name", "description", "directionsFromPrevious", "imageName", "lon", "lat"};
 	private ArrayList<DivisionObject> listOfDivisionObjects;// = TourApp.getDivisionArrayList();
 	
-	
+	//04.28.2011, 4.50PM, Anna:
+	//i intend to remoce the magic numbers again.
+	//primarily as a meand to keep testing merging and branching,
+	//because to some extent we need to figure that out.
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
