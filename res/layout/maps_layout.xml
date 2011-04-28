@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<!-- blue -->
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="10dip"
+		>
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="170dip"
+		>
+
+		<!-- red -->
+		<LinearLayout
+			android:gravity="center_horizontal"
+			android:layout_width="20dip"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			>
+		</LinearLayout>
+		
+		<!-- part of layout corresponding to map -->
+		<com.google.android.maps.MapView
+			android:id="@+id/mapView"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:enabled="true"
+			android:clickable="true"
+			android:apiKey="0jCdtB6aVh4NuUI3vp9_vwuWSMI8fC2khPMN7pA" />
+
+		<!-- green -->
+		<LinearLayout
+			android:gravity="center_horizontal"
+			android:layout_width="20dip"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			>
+		</LinearLayout>
+		
+	</LinearLayout>
+	
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		>
+	</LinearLayout>
+
+</LinearLayout>
