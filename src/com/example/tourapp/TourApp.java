@@ -31,5 +31,14 @@ public class TourApp extends Activity {
 				startActivity(intent);			
 			}
 		});	
+		
+		Button myMap = (Button) findViewById(R.id.button_my_map);
+		myMap.setOnClickListener(new OnClickListener() {
+			public void onClick(View v){
+				//start new activity : OnLocationMenu.class
+				Intent intent = new Intent(TourApp.this, MapsActivity.class);
+				startActivity(intent);			
+			}
+		});	
 	}
 }

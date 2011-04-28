@@ -3,6 +3,12 @@
       package="com.example.tourapp"
       android:versionCode="1"
       android:versionName="1.2">
+  	<uses-permission
+         android:name="android.permission.ACCESS_COARSE_LOCATION" />
+   <uses-permission
+         android:name="android.permission.ACCESS_FINE_LOCATION" />
+   <uses-permission
+         android:name="android.permission.INTERNET" />
     <application android:icon="@drawable/icon" android:label="@string/app_name">    
     	<uses-library android:name="com.google.android.maps" />
     	<uses-permission android:name="android.permission.INTERNET" />
@@ -14,6 +20,10 @@
         </activity>
         <activity android:name=".OnLocationMenu">
                 <action android:name="android.intent.action.ONLOCATIONMENU" />
+                <category android:name="android.intent.category.LAUNCHER" />
+        </activity>
+        <activity android:name=".MapsActivity">
+                <action android:name="android.intent.action.MAPSACTIVITY" />
                 <category android:name="android.intent.category.LAUNCHER" />
         </activity>
         <activity android:name=".GuidedTour">

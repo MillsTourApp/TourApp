@@ -13,4 +13,5 @@
     <string name="button_guided_tour">Show Me Around</string>
     <string name="button_division_list">Learn About Mills</string>
     <string name="button_division_1">Apply</string>
+    <string name="button_my_map">Where Am I?</string>
 </resources>
