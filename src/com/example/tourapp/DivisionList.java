@@ -5,7 +5,6 @@ package com.example.tourapp;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
@@ -18,44 +17,48 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class DivisionList extends ListActivity {
+public class DivisionList<listOfDivisionObjects> extends Activity {
 	private Database database;
 	private static String TABLE_NAME = "Place";
 	private static String[] FROM = {"_id", "name", "description", "directionsFromPrevious", "directionsToNext"};
-	ArrayList<DivisionObject> listOfDivisionObjects = new ArrayList<DivisionObject>(30);
-	private Runnable viewDivisions;
-	private DivisonObjectsAdapter mDivisionObjectsAdapter;
-
+	private ArrayList<DivisionObject> listOfDivisionObjects;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.divisionlist);
 		database = new Database(this, "division.txt", "division.db");
 		final Cursor cursor = getDivisions();
+		listOfDivisionObjects = new ArrayList<DivisionObject>(30);
 
-		/*		
-		int numOfDivisions = listOfDivisionObjects.size();
-		int cursorLength = cursor.getCount();
-
+		//use cursor to add DivisionObject's to ArrayList
+		while(cursor.moveToNext()){
+			int ID = cursor.getInt(0);
+			String name = cursor.getString(1);
+			String description = cursor.getString(2);
+			String dirFromPrev = cursor.getString(3);
+			DivisionObject objectToAdd = new DivisionObject(ID, name, description, dirFromPrev);
+			listOfDivisionObjects.add(objectToAdd);
+		}//end while loop for iterating through the cursor
+		
+		//load list of names - for now...
+		String divisionNames = "";
 		TextView tv = (TextView) findViewById(R.id.divisiontextview);
-
-		//tv.setText(objectToAdd.getName());
-
-		String printNameOfObject = "";
-
-		for (DivisionObject division : listOfDivisionObjects){
-			printNameOfObject+= (division.getName()) + "\n";
+		
+		for (DivisionObject divisionObj:listOfDivisionObjects){
+			divisionNames+= divisionObj.getName() +"\n";
 		}
-
-		tv.setText(printNameOfObject);
-		 */
-
-		setListAdapter(new ListAdapter(this, R.id.divisiontextview, listOfDivisionObjects));
-
+		
+		tv.setText(divisionNames);
+		
+		//setListAdapter(new DivisionListAdapter(this));
+		
 		/*		final ListView lv = getListView();
 		lv.setTextFilterEnabled(true);
 		 */
@@ -71,25 +74,6 @@ public class DivisionList extends ListActivity {
 			}//end onItemClick
 		});*/
 	}//end onCreate method
-	
-	private Runnable returnRes = new Runnable(){
-		@Override
-		public void run(){
-			
-		}
-	}
-
-	private void addDivisions(Cursor cursor){
-		while(cursor.moveToNext()){
-			int ID = cursor.getInt(0);
-			String name = cursor.getString(1);
-			String description = cursor.getString(2);
-			String dirFromPrev = cursor.getString(3);
-			DivisionObject objectToAdd = new DivisionObject(ID, name, description, dirFromPrev);
-			listOfDivisionObjects.add(objectToAdd);
-		}//end while loop for iterating through the cursor
-	}
-
 
 	private Cursor getDivisions(){
 		SQLiteDatabase db = database.getReadableDatabase();
@@ -97,36 +81,38 @@ public class DivisionList extends ListActivity {
 		startManagingCursor(cursor);
 		return cursor;
 	}//end getPlaces method
-
-
-	private class DivisonObjectsAdapter extends ArrayAdapter<DivisionObject>{
-		private ArrayList<DivisionObject> divisions;
-
-		public DivisonObjectsAdapter(Context context, int textViewResourceId,
-				ArrayList<DivisionObject> divisions) {
-			super(context, textViewResourceId, divisions);
-			this.divisions = divisions;
-		}//
-
-		@Override
+	
+/*	private class DivisionListAdapter extends BaseAdapter{
+		public DivisionListAdapter (Context context){
+			mContext = context;
+		}
+		
+		public int getCount(){
+			return listOfDivisionObjects.size();
+		}
+		
+		public Object getItem(int position){
+			return position;
+		}
+		
+		public int getItemID(int position){
+			return position;
+		}
+		
 		public View getView(int position, View convertView, ViewGroup parent){
-			View v = convertView;
+			DivisionView dv;
+			if (convertView == null){
+				sv = new DivisionView (mContext, listOfDivisonObjects.)
+			}
+			return dv;
+		}
+		
+		private Context mContext;
+	}
+	
+	private class DivisionView extends LinearLayout{
+		
+	}*/
 
-			DivisionObject division = divisions.get(position);
-			TextView tv = (TextView) findViewById(R.id.divisiontextview);
-			tv.setText(division.getName());
-			return v;
-		}//end getView
-	}//end class DivisionObjectsAdapter
 
-	/*	private String[] makeListOfDivisionNames(Cursor cursor, int cursorColumn){
-	int numOfDivisions = cursor.getCount();
-	String[] arrayFromCursor = new String[numOfDivisions];
-	while (cursor.moveToNext()){
-		arrayFromCursor[cursor.getPosition()] = cursor.getString(cursorColumn);
-	}//end while
-	cursor.moveToPosition(-1);
-	return arrayFromCursor;
-}//end makeListOfDivisionNames
-	 */	
 }//end DivisonList
