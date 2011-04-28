@@ -6,12 +6,14 @@ public class DivisionObject {
 	String name;
 	String description;
 	String dirFromPrev;
+	String imageName;
 	
-	public DivisionObject (int IdPassed, String namePassed, String descriptionPassed, String dirFromPrevPassed){
+	public DivisionObject (int IdPassed, String namePassed, String descriptionPassed, String dirFromPrevPassed, String imageNamePassed){
 		ID = IdPassed;
 		name = namePassed;
 		description = descriptionPassed;
 		dirFromPrev = dirFromPrevPassed;
+		imageName = imageNamePassed;
 	}//end constructor
 	
 	public int getId(){
@@ -30,7 +32,7 @@ public class DivisionObject {
 		return dirFromPrev;
 	}
 	
-	public String toString(){
-		return name;
+	public String getImageName(){
+		return imageName;
 	}
 }
