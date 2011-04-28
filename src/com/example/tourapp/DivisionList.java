@@ -20,7 +20,13 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 	private static String[] FROM = {"_id", "name", "description", "directionsFromPrevious", "imageName", "lon", "lat"};
 	private ArrayList<DivisionObject> listOfDivisionObjects;// = TourApp.getDivisionArrayList();
 	
-	
+	//04.28.2011, 4.55PM, Anna:
+	//Created a new branch branch_to_merge in order to hopefully
+	//make a change and then merge with master. I created it from  
+	//the remote/master, my previous comment disappeared, and 
+	//I added this one instead.
+
+
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
