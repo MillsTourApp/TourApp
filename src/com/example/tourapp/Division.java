@@ -15,7 +15,7 @@ public class Division extends Activity{
 		TextView name = (TextView) findViewById(R.id.division_name);
 		TextView description = (TextView) findViewById(R.id.division_descript);
 		description.setMovementMethod(new ScrollingMovementMethod());
-		TextView dirToNext = (TextView) findViewById(R.id.divisiondirtonext);
+		//TextView dirToNext = (TextView) findViewById(R.id.divisiondirtonext);
 		TextView dirFromPrev = (TextView) findViewById(R.id.divisiondirfromprev);
 		ImageView image = (ImageView) findViewById(R.id.divisionimage);
 
@@ -25,10 +25,13 @@ public class Division extends Activity{
 		//String divisionDirToNext = extras.getString("dDirToNext");
 		String divisionDirFromPrev = extras.getString("dDirFromPrev");
 		String divisionImageName = extras.getString("dImageName");
+		String divisionLon = extras.getString("lon");
+		String divisionLat = extras.getString("lat");
+		
 		int resId = this.getResources().getIdentifier(divisionImageName, "drawable", "com.example.tourapp");
 		name.setText(divisionName);
-		description.setText(divisionDescription);
-		dirFromPrev.setText(divisionDirFromPrev);
+		description.setText(divisionLon);
+		dirFromPrev.setText(divisionLat);
 		//dirToNext.setText(divisionDirToNext);
 		image.setImageResource(resId);
 	}

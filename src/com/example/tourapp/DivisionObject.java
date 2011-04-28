@@ -5,12 +5,16 @@ public class DivisionObject {
 	int ID;
 	String name;
 	String description;
+	String lon;
+	String lat;
 	String dirFromPrev;
 	String imageName;
 	
-	public DivisionObject (int IdPassed, String namePassed, String descriptionPassed, String dirFromPrevPassed, String imageNamePassed){
+	public DivisionObject (int IdPassed, String namePassed, String lonPassed, String latPassed, String descriptionPassed, String dirFromPrevPassed, String imageNamePassed){
 		ID = IdPassed;
 		name = namePassed;
+		lon = lonPassed;
+		lat = latPassed;
 		description = descriptionPassed;
 		dirFromPrev = dirFromPrevPassed;
 		imageName = imageNamePassed;
@@ -24,7 +28,16 @@ public class DivisionObject {
 		return name;
 	}
 	
-	public String getDecscription(){
+	public String getLon(){
+		return lon;
+	}
+	
+	public String getLat(){
+		return lat;
+	}
+	
+	
+	public String getDescription(){
 		return description;
 	}
 	
