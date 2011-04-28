@@ -35,7 +35,7 @@ public class Database extends SQLiteOpenHelper{
 			e.printStackTrace();
 		}//try-catch
 		
-		String[] arrayOfCommands = commands.split(";");
+		String[] arrayOfCommands = commands.split("\n");
 		for(String command: arrayOfCommands){
 			if(!(command.equals(""))){
 				db.execSQL(command);
