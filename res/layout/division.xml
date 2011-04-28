@@ -4,6 +4,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
+    <ImageView
+    android:id="@+id/divisionimage"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    /> 
     <TextView  
     android:id="@+id/division_name"
     android:layout_width="fill_parent" 
@@ -26,5 +31,5 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     />
-     
+
 </LinearLayout>
