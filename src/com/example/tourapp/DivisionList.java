@@ -21,9 +21,10 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 	private ArrayList<DivisionObject> listOfDivisionObjects;// = TourApp.getDivisionArrayList();
 	
 
-	//begone, ye Magic Numbers! (Anna, 04.28.2011, 5:00PM)
+	//begone, ye Magic Numbers! (Anna, 04.28.2011, 5:05PM)
 	private static final int MAX_NUM_DIVISIONOBJECTS = 30;
 	private static final int ID_LIST = 0;
+	private static final int NAME_LIST = 1;
 	
 	//04.28.2011, 4.55PM, Anna:
 	//Created a new branch branch_to_merge in order to hopefully
@@ -43,8 +44,8 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 
 		//use cursor to add DivisionObject's to ArrayList
 		while(cursor.moveToNext()){
-			int ID = cursor.getInt(0);
-			String name = cursor.getString(1);
+			int ID = cursor.getInt(ID_LIST);
+			String name = cursor.getString(NAME_LIST);
 			String description = cursor.getString(2);
 			String dirFromPrev = cursor.getString(3);
 			String imageName = cursor.getString(4);
