@@ -20,6 +20,11 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 	private static String[] FROM = {"_id", "name", "description", "directionsFromPrevious", "imageName", "lon", "lat"};
 	private ArrayList<DivisionObject> listOfDivisionObjects;// = TourApp.getDivisionArrayList();
 	
+
+	//begone, ye Magic Numbers! (Anna, 04.28.2011, 5:00PM)
+	private static final int MAX_NUM_DIVISIONOBJECTS = 30;
+	private static final int ID_LIST = 0;
+	
 	//04.28.2011, 4.55PM, Anna:
 	//Created a new branch branch_to_merge in order to hopefully
 	//make a change and then merge with master. I created it from  
@@ -34,7 +39,7 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 		setContentView(R.layout.divisionlist);
 		database = new Database(this, "division.txt", "division.db");
 		final Cursor cursor = getDivisions();
-		listOfDivisionObjects = new ArrayList<DivisionObject>(30);
+		listOfDivisionObjects = new ArrayList<DivisionObject>(MAX_NUM_DIVISIONOBJECTS);
 
 		//use cursor to add DivisionObject's to ArrayList
 		while(cursor.moveToNext()){
