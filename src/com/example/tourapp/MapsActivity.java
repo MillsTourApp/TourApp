@@ -15,12 +15,10 @@
 
 package com.example.tourapp;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -29,161 +27,47 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
-import com.google.android.maps.MapView.LayoutParams;
 
 public class MapsActivity extends MapActivity {
-	private MapController mc;
-	private GeoPoint p;
 	private MapView mapView;
 	private List<Overlay> mapOverlays;
 	private MapController controller;
 	private Drawable drawable;
-	private Drawable drawable2;
 	private MyItemizedOverlay itemizedOverlay;
-	private MyItemizedOverlay itemizedOverlay2;
+	//test arraylist
+	private ArrayList<DivisionObject> manualListOfDivisionObjects;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		//create the array and fill it
+		manualListOfDivisionObjects = new ArrayList<DivisionObject>(30);
+		DivisionObject obj1 = new DivisionObject(1, "Mills Hall", "-122.18212", "37.779496", "This is a description of Mills Hall","These are directions to the building before Mills Hall", "This is the name of an image for Mills Hall");
+		manualListOfDivisionObjects.add(obj1);
+		DivisionObject obj2 = new DivisionObject(1, "Natural Sciences Building", "-122.180666", "37.780143", "This is a description of Natural Sciences Building","These are directions to the building before the Natural Sciences Building", "This is the name of an image for the Natural Sciences Building");
+		manualListOfDivisionObjects.add(obj2);
+		DivisionObject obj3 = new DivisionObject(1, "Carnegie Hall", "-122.181645", "37.778995", "This is a description of Carnegie Hall","These are directions to the building before Carnegie Hall", "This is the name of an image for Carnegie Hall");
+		manualListOfDivisionObjects.add(obj3);
+		DivisionObject obj4 = new DivisionObject(1, "CPM", "-122.182791", "37.778726", "This is a description of CPM","These are directions to the building before CPM", "This is the name of an image for CPM");
+		manualListOfDivisionObjects.add(obj4);
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map_layout);
 		initMapView();
 		initMyLocation();
-
-
 		mapOverlays = mapView.getOverlays();
-
-		// first overlay
+		// create itemized overlay
 		drawable = getResources().getDrawable(R.drawable.marker);
 		itemizedOverlay = new MyItemizedOverlay(drawable, mapView);
-
-		GeoPoint point = new GeoPoint((int)(37.77946909500844*1E6),(int)(-122.18220055103302*1E6));
-		OverlayItem overlayItem = new OverlayItem(point, "Mills Hall", 
-		"(Start at Mills Hall: From the Office of Undergraduate Admission, walk downstairs to the living room)");
-		itemizedOverlay.addOverlay(overlayItem);
-
-		GeoPoint point2 = new GeoPoint((int)(37.778664*1E6),(int)(-122.182402*1E6));
-		OverlayItem overlayItem2 = new OverlayItem(point2, "El Campanil", 
-		"(Walk out the front door to the oval-shaped lawn, known as 'the Oval')");		
-		itemizedOverlay.addOverlay(overlayItem2);
-
-		// second overlay
-		drawable2 = getResources().getDrawable(R.drawable.marker);
-		itemizedOverlay2 = new MyItemizedOverlay(drawable2, mapView);
-
-		GeoPoint point3 = new GeoPoint((int)(37.778726*1E6),(int)(-122.182791*1E6));
-		OverlayItem overlayItem3 = new OverlayItem(point3, "CPM", 
-		"(Walk behind El Campanil)");
-		itemizedOverlay.addOverlay(overlayItem3);
-
-		GeoPoint point4 = new GeoPoint((int)(37.777539*1E6),(int)(-122.183971*1E6));
-		OverlayItem overlayItem4 = new OverlayItem(point4, "Education Complex", 
-		"(Walk down the road next to CPM (called Post Rd.), to the Education Complex)");		
-		itemizedOverlay.addOverlay(overlayItem4);
-
-		GeoPoint point5 = new GeoPoint((int)(37.778995*1E6),(int)(-122.181645*1E6));
-		OverlayItem overlayItem5 = new OverlayItem(point5, "Carnegie Hall", 
-		"(Turn left and walk toward the two-story building with the arched windows framed in blue)");		
-		itemizedOverlay.addOverlay(overlayItem5);
-
-		GeoPoint point6 = new GeoPoint((int)(37.780143*1E6),(int)(-122.180666*1E6));
-		OverlayItem overlayItem6 = new OverlayItem(point6, "Natural Sciences Building", 
-		"(Turn left down Wetmore Road and walk to the Betty Irene Moore Natural Sciences Building)");		
-		itemizedOverlay.addOverlay(overlayItem6);
-
-		GeoPoint point7 = new GeoPoint((int)(37.781336*1E6),(int)(-122.1793*1E6));
-		OverlayItem overlayItem7 = new OverlayItem(point7, "Founders Commons", 
-		"(Continue along Wetmore Road toward Founders Commons, our main dining hall)");		
-		itemizedOverlay.addOverlay(overlayItem7);
-
-		GeoPoint point8 = new GeoPoint((int)(37.78297*1E6),(int)(-122.18190*1E6));
-		OverlayItem overlayItem8 = new OverlayItem(point8, "Art Museum and Aron Art Center", 
-				"(Continue down Post Road and turn right on Kapiolani Road—you are now facing the " +
-		"Mills College Art Museum and the Aron Art Center)");		
-		itemizedOverlay.addOverlay(overlayItem8);
-
-		GeoPoint point9 = new GeoPoint((int)(37.782449*1E6),(int)(-122.182329*1E6));
-		OverlayItem overlayItem9= new OverlayItem(point9, "Warren Olney Hall", 
-				"(Walk back toward the intersection of Post and Kapiolani Roads and face " +
-		"Warren Olney Hall on the right)");		
-		itemizedOverlay.addOverlay(overlayItem9);
-
-		GeoPoint point10 = new GeoPoint((int)(37.782067*1E6),(int)(-122.183359*1E6));
-		OverlayItem overlayItem10 = new OverlayItem(point10, "Orchard Meadow Hall", 
-				"(Walk past Warren Olney Hall’s front entrance and go under the walkway " +
-				"arch on the right; continue across the courtyard (behind Olney Hall) and through " +
-		"the second underpass—you will arrive at the front of Orchard Meadow Hall)");		
-		itemizedOverlay.addOverlay(overlayItem10);
-
-		GeoPoint point11 = new GeoPoint((int)(37.781568*1E6),(int)(-122.184762*1E6));
-		OverlayItem overlayItem11 = new OverlayItem(point11, "Music Building", 
-		"(Continue on Orchard Meadow Road and walk toward the Music Building)");		
-		itemizedOverlay.addOverlay(overlayItem11);
-
-		GeoPoint point12 = new GeoPoint((int)(37.782652*1E6),(int)(-122.184722*1E6));
-		OverlayItem overlayItem12 = new OverlayItem(point12, "Haas Pavilion", 
-		"(Turn right on Richards Road and walk toward Haas Pavilion)");		
-		itemizedOverlay.addOverlay(overlayItem12);
-
-		GeoPoint point13 = new GeoPoint((int)(37.783265*1E6),(int)(-122.185231*1E6));
-		OverlayItem overlayItem13 = new OverlayItem(point13, "Trefethen Aquatic Center", 
-				"(Walk to the left of Haas Pavilion, around the back, and up the stairs " +
-		"to the Trefethen Aquatic Center (pool, 4 on map))");		
-		itemizedOverlay.addOverlay(overlayItem13);
-
-		GeoPoint point14 = new GeoPoint((int)(37.783571*1E6),(int)(-122.187468*1E6));
-		OverlayItem overlayItem14 = new OverlayItem(point14, "Alderwood Hall", 
-				"(Walk to Alderwood Hall, located on the other end of the soccer " +
-		"field, near the front gate)");		
-		itemizedOverlay.addOverlay(overlayItem14);
-
-		GeoPoint point15 = new GeoPoint((int)(37.78217*1E6),(int)(-122.185781*1E6));
-		OverlayItem overlayItem15 = new OverlayItem(point15, "Chapel", 
-		"(Walk back toward Richards Road; you will see the Chapel)");		
-		itemizedOverlay.addOverlay(overlayItem15);
-
-		GeoPoint point16 = new GeoPoint((int)(37.7817*1E6),(int)(-122.182933*1E6));
-		OverlayItem overlayItem16 = new OverlayItem(point16, "Graduate School of Business", 
-		"(Walk back down Richards Road toward the center of campus)");		
-		itemizedOverlay.addOverlay(overlayItem16);
-
-		GeoPoint point17 = new GeoPoint((int)(37.780948*1E6),(int)(-122.181289*1E6));
-		OverlayItem overlayItem17 = new OverlayItem(point17, "Rothwell Center", 
-				"(Turn left and walk toward the two-story building with the arched " +
-		"windows framed in blue)");		
-		itemizedOverlay.addOverlay(overlayItem17);
-
-		GeoPoint point18 = new GeoPoint((int)(37.78074*1E6),(int)(-122.18279*1E6));
-		OverlayItem overlayItem18 = new OverlayItem(point18, "Lisser Hall", 
-		"(Cross Kapiolani Road to Lisser Hall and the F. W. Olin Library )");		
-		itemizedOverlay.addOverlay(overlayItem18);
-
-		GeoPoint point19 = new GeoPoint((int)(37.78115*1E6),(int)(-122.18236*1E6));
-		OverlayItem overlayItem19 = new OverlayItem(point19, "F. W. Olin Library", 
-		"(Cross Kapiolani Road to Lisser Hall and the F. W. Olin Library )");		
-		itemizedOverlay.addOverlay(overlayItem19);
-
-		GeoPoint point20 = new GeoPoint((int)(37.780276*1E6),(int)(-122.181884*1E6));
-		OverlayItem overlayItem20 = new OverlayItem(point20, "Toyon Meadow", 
-		"(Turn right onto the walkway over the graduation mound, back toward Mills Hall)");		
-		itemizedOverlay.addOverlay(overlayItem20);
-
-		GeoPoint point21 = new GeoPoint((int)(37.781564*1E6),(int)(-122.180621*1E6));
-		OverlayItem overlayItem21 = new OverlayItem(point21, "Vera M. Long Building", 
-		"(Turn left at Post Road and continue to the Vera M.Long Building for the Social Sciences)");		
-		itemizedOverlay.addOverlay(overlayItem21);
-
+		//Create balloon overlays using test arraylist
+		for (DivisionObject obj:manualListOfDivisionObjects){
+			double lat = Double.parseDouble(obj.getLat());
+			double lon = Double.parseDouble(obj.getLon());
+			createOverlay(lat, lon, obj.getName(), obj.getDirFromPrev());
+		}
 		mapOverlays.add(itemizedOverlay);
-
-		final MapController mc = mapView.getController();
-		//mc.animateTo(point);
-		//mc.setZoom(17);
-		//mapView.setSatellite(true);
-		// mapView.invalidate();
-
 	}
-
-	/** Find and initialize the map view. */
+	
+	/** Find and initialize the map view. (From Hello Android tutorial)*/
 	private void initMapView() {
 		mapView = (MapView) findViewById(R.id.mapView);
 		controller = mapView.getController();
@@ -191,7 +75,7 @@ public class MapsActivity extends MapActivity {
 		mapView.setBuiltInZoomControls(true);
 	}
 
-	/** Start tracking the position on the map. */
+	/** Start tracking the position on the map. (From Hello Android tutorial)*/
 	private void initMyLocation() {
 		final MyLocationOverlay overlay = new MyLocationOverlay(this, mapView);
 		overlay.enableMyLocation();
@@ -199,25 +83,31 @@ public class MapsActivity extends MapActivity {
 		overlay.runOnFirstFix(new Runnable() {
 			public void run() {
 				// Zoom in to current location
-				controller.setZoom(10);
+				controller.setZoom(17);
 				controller.animateTo(overlay.getMyLocation());
 			}
 		});
 		mapView.getOverlays().add(overlay);
 	}
 
-	/*for (i=0; listOfDivisionObjects.size()-1; i++;){
-		double lat = parseDouble(listOfDivisionObjects[i].getlat);
-		double lon = parseDouble(listOfDivisionObjects[i].getlong);
-		createOverlay(lat, lon, listOfDivisionObjects[i].getName, listOfDivisionObjects[i].getDirFromPrev);
-	}
+	/**
+	 * Creates a balloon overlay that puts a point on the map of the building specified 
+	 * in the parameters
+	 * @param lat Latitude of the building
+	 * @param lon Longitude of the building
+	 * @param name Name of the building
+	 * @param directions Directions to the building from the previous building
+	 */
 	public void createOverlay (double lat, double lon, String name, String directions){
 		GeoPoint point = new GeoPoint((int)(lat*1E6),(int)(lon*1E6));
-		OverlayItem overlayItem = new OverlayItem(point, name, 
-				directions);
+		OverlayItem overlayItem = new OverlayItem(point, name, directions);
 		itemizedOverlay.addOverlay(overlayItem);
-	}*/
+	}
 
+	/**
+	 * Specifies whether there is a route displayed
+	 * @return True is a route is displayed, false if there is not a route displayed
+	 */
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;

@@ -22,7 +22,7 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()){
 		case R.id.button_guided_tour:
-			Intent i1 = new Intent (this, GuidedTour.class);
+			Intent i1 = new Intent (this, MapsActivity.class);
 			startActivity(i1);
 			break;
 		case R.id.button_division_list:
