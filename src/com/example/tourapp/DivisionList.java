@@ -21,25 +21,17 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 	private ArrayList<DivisionObject> listOfDivisionObjects;// = TourApp.getDivisionArrayList();
 	
 
-	//begone, ye Magic Numbers! (Anna, 04.28.2011, 5:05PM)
+	//begone, ye Magic Numbers! (Anna, 04.30.2011, 11:15AM)
 	private static final int MAX_NUM_DIVISIONOBJECTS = 30;
 	private static final int ID_LIST = 0;
 	private static final int NAME_LIST = 1;
+	private static final int DESC_LIST = 2;
+	private static final int DIR_LIST = 3;
+	private static final int IMG_LIST = 4;
+	private static final int LON_LIST = 5;
+	private static final int LAT_LIST = 6;
 	
-	//04.28.2011, 4.55PM, Anna:
-	//Created a new branch branch_to_merge in order to hopefully
-	//make a change and then merge with master. I created it from  
-	//the remote/master, my previous comment disappeared, and 
-	//I added this one instead.
-
-
-
-	//04.28.2011, 4.50PM, Anna:
-	//i intend to remoce the magic numbers again.
-	//primarily as a meand to keep testing merging and branching,
-	//because to some extent we need to figure that out.
-
-	
+		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,14 +44,14 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 		while(cursor.moveToNext()){
 			int ID = cursor.getInt(ID_LIST);
 			String name = cursor.getString(NAME_LIST);
-			String description = cursor.getString(2);
-			String dirFromPrev = cursor.getString(3);
-			String imageName = cursor.getString(4);
-			String lon = cursor.getString(5);
-			String lat = cursor.getString(6);
+			String description = cursor.getString(DESC_LIST);
+			String dirFromPrev = cursor.getString(DIR_LIST);
+			String imageName = cursor.getString(IMG_LIST);
+			String lon = cursor.getString(LON_LIST);
+			String lat = cursor.getString(LAT_LIST);
 			DivisionObject objectToAdd = new DivisionObject(ID, name, lon, lat, description, dirFromPrev, imageName);
 			listOfDivisionObjects.add(objectToAdd);
-		}//end while loop for iterating through the cursor
+		} //end while loop for iterating through the cursor
 		
 		final ListView lv = (ListView) findViewById(R.id.divisionlistview);
 		lv.setAdapter(new DivisionBaseAdapter(this, listOfDivisionObjects));
