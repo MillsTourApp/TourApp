@@ -34,15 +34,6 @@ public class GuidedTour extends MapActivity {
  
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.setBuiltInZoomControls(true);
-/*        LinearLayout zoomLayout = (LinearLayout)findViewById(R.id.zoom);  
-        @SuppressWarnings("deprecation")
-		View zoomView = mapView.getZoomControls();
- 
-        zoomLayout.addView(zoomView, 
-            new LinearLayout.LayoutParams(
-                LayoutParams.WRAP_CONTENT, 
-                LayoutParams.WRAP_CONTENT)); 
-        mapView.displayZoomControls(true);*/
  
         mc = mapView.getController();
         String coordinates[] = {MILLS_HALL_LAT, MILLS_HALL_LONG};
@@ -54,7 +45,7 @@ public class GuidedTour extends MapActivity {
             (int) (lng * 1E6));
  
         mc.animateTo(p);
-        mc.setZoom(17);
+        mc.setZoom(18);
         mapView.setSatellite(true);
         mapView.invalidate();
     }

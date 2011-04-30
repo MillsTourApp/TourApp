@@ -21,7 +21,7 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 	private ArrayList<DivisionObject> listOfDivisionObjects;// = TourApp.getDivisionArrayList();
 	
 
-	//begone, ye Magic Numbers! (Anna, 04.30.2011, 11:15AM)
+	//begone, ye Magic Numbers! (Anna, 04.30.2011, 12:15PM)
 	private static final int MAX_NUM_DIVISIONOBJECTS = 30;
 	private static final int ID_LIST = 0;
 	private static final int NAME_LIST = 1;
