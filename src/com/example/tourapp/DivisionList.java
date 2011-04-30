@@ -20,10 +20,25 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 	private static String[] FROM = {"_id", "name", "description", "directionsFromPrevious", "imageName", "lon", "lat"};
 	private ArrayList<DivisionObject> listOfDivisionObjects;// = TourApp.getDivisionArrayList();
 	
+
+	//begone, ye Magic Numbers! (Anna, 04.28.2011, 5:05PM)
+	private static final int MAX_NUM_DIVISIONOBJECTS = 30;
+	private static final int ID_LIST = 0;
+	private static final int NAME_LIST = 1;
+	
+	//04.28.2011, 4.55PM, Anna:
+	//Created a new branch branch_to_merge in order to hopefully
+	//make a change and then merge with master. I created it from  
+	//the remote/master, my previous comment disappeared, and 
+	//I added this one instead.
+
+
+
 	//04.28.2011, 4.50PM, Anna:
 	//i intend to remoce the magic numbers again.
 	//primarily as a meand to keep testing merging and branching,
 	//because to some extent we need to figure that out.
+
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,12 +46,12 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 		setContentView(R.layout.divisionlist);
 		database = new Database(this, "division.txt", "division.db");
 		final Cursor cursor = getDivisions();
-		listOfDivisionObjects = new ArrayList<DivisionObject>(30);
+		listOfDivisionObjects = new ArrayList<DivisionObject>(MAX_NUM_DIVISIONOBJECTS);
 
 		//use cursor to add DivisionObject's to ArrayList
 		while(cursor.moveToNext()){
-			int ID = cursor.getInt(0);
-			String name = cursor.getString(1);
+			int ID = cursor.getInt(ID_LIST);
+			String name = cursor.getString(NAME_LIST);
 			String description = cursor.getString(2);
 			String dirFromPrev = cursor.getString(3);
 			String imageName = cursor.getString(4);
