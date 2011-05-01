@@ -30,7 +30,7 @@ public class Division extends Activity{
 		
 		int resId = this.getResources().getIdentifier(divisionImageName, "drawable", "com.example.tourapp");
 		name.setText(divisionName);
-		description.setText(divisionLon);
+		description.setText(divisionDescription);
 		dirFromPrev.setText(divisionLat);
 		//dirToNext.setText(divisionDirToNext);
 		image.setImageResource(resId);
