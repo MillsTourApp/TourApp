@@ -12,11 +12,11 @@ import android.widget.Button;
 
 public class TourApp extends Activity {
 	
-	public Database database = new Database(this, "division.txt", "fullDivision.db");
+	public Database database = new Database(this, "division.txt", "fullDivision2.db");
 	private static String TABLE_NAME1 = "Place";
 	private static String TABLE_NAME2 = "Division";
 	private static String[] PLACEFROM = {"_id", "name", "lon", "lat", "description", "directionsFromPrevious", "directionsToNext", "imageName"};
-	private static String[] DIVISIONFROM = {"_id", "name","lon", "lat", "description", "imageName"};
+	private static String[] DIVISIONFROM = {"_id", "name", "description", "imageName", "phone", "email", "website","building"};
 
 	public ArrayList<DivisionObject> listOfDivisions;
 	public ArrayList<PlaceObject> listOfPlaces;
@@ -37,11 +37,13 @@ public class TourApp extends Activity {
 		while(divisionCursor.moveToNext()){
 			int ID = divisionCursor.getInt(0);
 			String name = divisionCursor.getString(1);
-			String lon = divisionCursor.getString(2);
-			String lat = divisionCursor.getString(3);
-			String description = divisionCursor.getString(4);
-			String imageName = divisionCursor.getString(5);
-			DivisionObject objectToAdd = new DivisionObject(ID, name, lon, lat, description, imageName);
+			String description = divisionCursor.getString(2);
+			String imageName = divisionCursor.getString(3);
+			String phone = divisionCursor.getString(4);
+			String email = divisionCursor.getString(5);
+			String website = divisionCursor.getString(6);
+			String building = divisionCursor.getString(7);
+			DivisionObject objectToAdd = new DivisionObject(ID, name, description, imageName, phone, email, website, building);
 			listOfDivisions.add(objectToAdd);
 		}//end while loop for iterating through the cursor
 		
@@ -81,7 +83,6 @@ public class TourApp extends Activity {
 			}
 		});	
 	}
-	
 	
 	private Cursor getDBContents(String tablename, String[] from){
 		SQLiteDatabase db = database.getReadableDatabase();

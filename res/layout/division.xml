@@ -17,19 +17,23 @@
     <TextView
     android:id="@+id/division_descript"
     android:layout_width="fill_parent" 
-    android:layout_height="100dip" 
-    android:maxLines ="5"
+    android:layout_height="120dip" 
+    android:maxLines ="8"
     android:scrollbars="vertical"
     />
     <TextView
-    android:id="@+id/divisiondirtonext"
+    android:id="@+id/divisionphone"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     />
     <TextView
-    android:id="@+id/divisiondirfromprev"
+    android:id="@+id/divisionemail"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     />
-
+    <TextView
+    android:id="@+id/divisionwebsite"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    />
 </LinearLayout>

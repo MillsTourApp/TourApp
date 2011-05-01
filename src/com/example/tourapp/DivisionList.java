@@ -6,14 +6,12 @@ package com.example.tourapp;
 import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class DivisionList<listOfDivisionObjects> extends Activity {
 	private ArrayList<DivisionObject> listOfDivisionObjects;
@@ -39,6 +37,9 @@ public class DivisionList<listOfDivisionObjects> extends Activity {
 				intent.putExtra("name", listOfDivisionObjects.get(position).getName());
 				intent.putExtra("description", listOfDivisionObjects.get(position).getDescription());
 				intent.putExtra("imageName", listOfDivisionObjects.get(position).getImageName());
+				intent.putExtra("phone", listOfDivisionObjects.get(position).getPhone());
+				intent.putExtra("email", listOfDivisionObjects.get(position).getEmail());
+				intent.putExtra("website", listOfDivisionObjects.get(position).getWebsite());
 				startActivity(intent);
 			}//end onItemClick
 		});

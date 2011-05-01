@@ -19,8 +19,8 @@ public class PlaceObject implements Parcelable {
 			String lonPassed, 
 			String latPassed,
 			String descriptionPassed,
-			String dirToNextPassed,
 			String dirFromPrevPassed, 
+			String dirToNextPassed,
 			String imageNamePassed){
 		ID = IdPassed;
 		name = namePassed;
