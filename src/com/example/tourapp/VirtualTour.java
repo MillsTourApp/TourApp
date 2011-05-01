@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 
 public class VirtualTour extends Activity{
 	private ArrayList<DivisionObject> manualListOfDivisionObjects;
-	private Integer[] mThumbIds2;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		manualListOfDivisionObjects = new ArrayList<DivisionObject>(30);
@@ -49,7 +47,7 @@ public class VirtualTour extends Activity{
 		}
 
 		public int getCount() {
-			return mThumbIds.length;
+			return manualListOfDivisionObjects.size();
 		}
 
 		public Object getItem(int position) {
@@ -72,24 +70,10 @@ public class VirtualTour extends Activity{
 				imageView = (ImageView) convertView;
 			}
 			imageView.setImageResource(findImageName(position));
-			//imageView.setImageResource(mThumbIds[position]);
 			return imageView;
 		}
 		//private Integer[] 
 		// references to our images
-		private Integer[] mThumbIds = {
-				R.drawable.sample_2, R.drawable.sample_3,
-				R.drawable.sample_4, R.drawable.sample_5,
-				R.drawable.sample_6, R.drawable.sample_7,
-				R.drawable.sample_0, R.drawable.sample_1,
-				R.drawable.sample_2, R.drawable.sample_3,
-				R.drawable.sample_4, R.drawable.sample_5,
-				R.drawable.sample_6, R.drawable.sample_7,
-				R.drawable.sample_0, R.drawable.sample_1,
-				R.drawable.sample_2, R.drawable.sample_3,
-				R.drawable.sample_4, R.drawable.sample_5,
-				R.drawable.sample_6, R.drawable.sample_7
-		};
 	}
 	public int findImageName(int position){
 		for (DivisionObject obj:manualListOfDivisionObjects){
