@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,17 @@ public class VirtualTour extends Activity{
 
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-				Toast.makeText(VirtualTour.this, "" + position, Toast.LENGTH_SHORT).show();
+				//Toast.makeText(VirtualTour.this, "" + position, Toast.LENGTH_SHORT).show();
+				Object object = findObject(position);
+				DivisionObject divisionObject = (DivisionObject)object;
+				String name = divisionObject.getName();
+				String description = divisionObject.getDescription();
+				String imageName = divisionObject.getImageName();
+				Intent intent = new Intent().setClass(VirtualTour.this, Division.class);
+				intent.putExtra("dName", name);
+				intent.putExtra("description", description);
+				intent.putExtra("dImageName", imageName);
+				startActivity(intent);
 			}
 		});
 	}
@@ -75,6 +86,15 @@ public class VirtualTour extends Activity{
 		//private Integer[] 
 		// references to our images
 	}
+	public DivisionObject findObject(int position){
+		for (DivisionObject obj:manualListOfDivisionObjects){
+			if(obj.getId() == position){
+				return obj;
+			}
+		}
+		return null;
+	}
+	
 	public int findImageName(int position){
 		for (DivisionObject obj:manualListOfDivisionObjects){
 			if(obj.getId() == position){
