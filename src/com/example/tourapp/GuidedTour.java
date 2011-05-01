@@ -100,7 +100,6 @@ public class GuidedTour extends MapActivity {
 	public String getTextOfSelectedBalloon(int index){
 		DivisionObject obj = manualListOfDivisionObjects.get(index);
 		return obj.getDescription();
-		
 	}
 	/**
 	 * Specifies whether there is a route displayed
