@@ -29,7 +29,7 @@ public class GuidedTour extends MapActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		//create the array and fill it
+/*		//create the array and fill it
 		manualListOfDivisionObjects = new ArrayList<DivisionObject>(30);
 		DivisionObject obj1 = new DivisionObject(0, "Mills Hall", "-122.18212", "37.779496", "This is a description of Mills Hall.","Start your tour here!", "This is the name of an image for Mills Hall");
 		manualListOfDivisionObjects.add(obj1);
@@ -38,7 +38,7 @@ public class GuidedTour extends MapActivity {
 		DivisionObject obj3 = new DivisionObject(2, "Carnegie Hall", "-122.181645", "37.778995", "This is a description of Carnegie Hall","Directions from NSB: These are directions from the building before Carnegie Hall", "This is the name of an image for Carnegie Hall");
 		manualListOfDivisionObjects.add(obj3);
 		DivisionObject obj4 = new DivisionObject(3, "CPM", "-122.182791", "37.778726", "This is a description of CPM","From Carnegie Hall: These are directions from the building before CPM", "This is the name of an image for CPM");
-		manualListOfDivisionObjects.add(obj4);
+		manualListOfDivisionObjects.add(obj4);*/
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map_layout);
@@ -50,11 +50,11 @@ public class GuidedTour extends MapActivity {
 		drawable.setAlpha(200);
 		itemizedOverlay = new MyItemizedOverlay(drawable, mapView);
 		//Create balloon overlays using test arraylist
-		for (DivisionObject obj:manualListOfDivisionObjects){
+/*		for (DivisionObject obj:manualListOfDivisionObjects){
 			double lat = Double.parseDouble(obj.getLat());
 			double lon = Double.parseDouble(obj.getLon());
 			createOverlay(lat, lon, obj.getId(), obj.getName(), obj.getDirFromPrev());
-		}
+		}*/
 		mapOverlays.add(itemizedOverlay);
 		
 	}

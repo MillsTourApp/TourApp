@@ -1,5 +1,7 @@
 package com.example.tourapp;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -15,24 +17,22 @@ public class Division extends Activity{
 		TextView name = (TextView) findViewById(R.id.division_name);
 		TextView description = (TextView) findViewById(R.id.division_descript);
 		description.setMovementMethod(new ScrollingMovementMethod());
-		//TextView dirToNext = (TextView) findViewById(R.id.divisiondirtonext);
-		TextView dirFromPrev = (TextView) findViewById(R.id.divisiondirfromprev);
 		ImageView image = (ImageView) findViewById(R.id.divisionimage);
 
 		Bundle extras = getIntent().getExtras();
-		String divisionName = extras.getString("dName");
+		
+		//ArrayList<DivisionObject> listOfDivisionObjects = extras.getParcelableArrayList("divisionArrayList");
+		//ArrayList<DivisionObject> manualListOfDivisionObjects = new ArrayList<DivisionObject>(30);
+
+		String divisionName = extras.getString("name");
 		String divisionDescription = extras.getString("description");
-		//String divisionDirToNext = extras.getString("dDirToNext");
-		String divisionDirFromPrev = extras.getString("dDirFromPrev");
-		String divisionImageName = extras.getString("dImageName");
-		String divisionLon = extras.getString("lon");
-		String divisionLat = extras.getString("lat");
+		String divisionImageName = extras.getString("imageName");
 		
 		int resId = this.getResources().getIdentifier(divisionImageName, "drawable", "com.example.tourapp");
 		name.setText(divisionName);
-		description.setText(divisionLon);
-		dirFromPrev.setText(divisionLat);
-		//dirToNext.setText(divisionDirToNext);
+		description.setText(divisionDescription);
 		image.setImageResource(resId);
+		
+		
 	}
 }

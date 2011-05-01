@@ -4,6 +4,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
+    <TextView
+    android:id="@+id/onlocationtest"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    />
 	<Button android:id="@+id/button_guided_tour"
     	android:text="@string/button_guided_tour"
     	android:layout_width="fill_parent"
