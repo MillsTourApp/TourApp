@@ -15,6 +15,7 @@
 	</LinearLayout>
 
 	<LinearLayout
+		android:id="@+id/upper_view"
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="170dip">
@@ -46,7 +47,8 @@
 		</LinearLayout>
 	
 	</LinearLayout>
-
+	
+	<!-- it is possible that this should be a ScrollView instead -->
 	<LinearLayout
 		android:id="@+id/lower_view"
 		android:layout_width="fill_parent"
@@ -54,18 +56,19 @@
 		android:layout_height="fill_parent">
 
 		<!-- title, description, directions -->
-
 		<TextView
 			android:id="@+id/title_view"
-			android:text="@+id/TextView01"
+			android:text="@+id/title"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:includeFontPadding="true">
+			android:includeFontPadding="true"
+			android:layout_gravity="center_horizontal"
+			android:textStyle="bold">
 		</TextView>
 	
 		<TextView
 			android:id="@+id/desc_view"
-			android:text="@+id/TextView01"
+			android:text="@+id/description"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:includeFontPadding="true">
