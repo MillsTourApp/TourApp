@@ -97,7 +97,7 @@ public class VirtualTour extends Activity{
 	}
 	public PlaceObject findObject(int position){
 		for (PlaceObject obj:listOfPlaces){
-			if(obj.getId() == position){
+			if(obj.getId()-1 == position){
 				return obj;
 			}
 		}
@@ -106,7 +106,7 @@ public class VirtualTour extends Activity{
 	
 	public int findImageName(int position){
 		for (PlaceObject obj:listOfPlaces){
-			if(obj.getId() == position){
+			if(obj.getId()-1 == position){
 				return findImage(obj);
 			}
 		}
