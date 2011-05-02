@@ -18,7 +18,7 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
-public class GuidedTour extends MapActivity {
+public class GuidedTour extends MapActivity implements OnClickListener {
 	//map fields
 	private MapView mMapView;
 	private List<Overlay> mMapOverlays;
@@ -33,7 +33,6 @@ public class GuidedTour extends MapActivity {
 	public ArrayList<PlaceObject> mListOfPlaces;
 	
 	//constants
-	private static final int NUM_PLACE_OBJ = 30; //temp
 	private static final int BALLOON_OPACITY = 200;
 	private static final int MAP_ZOOM = 18;
 	private static final double NORMALIZE_COORDINATES = 1E6;
@@ -46,11 +45,13 @@ public class GuidedTour extends MapActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guidedtour);
-			
+		
+		int currentPlaceId = 1;
+		
 		Bundle extras = getIntent().getExtras();
 		mListOfPlaces = extras.getParcelableArrayList("com.example.tourapp.placeArrayList");
 		
-		PlaceObject currentPlace = mListOfPlaces.get(1); //set to Mills Hall for testing purposes
+		PlaceObject currentPlace = mListOfPlaces.get(currentPlaceId); //set to Mills Hall for testing purposes
 			
 		//map view
 		initMapView();
@@ -139,7 +140,7 @@ public class GuidedTour extends MapActivity {
 	 * cannot decide whether to try to 
 	 */
 	
-	/*
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()){
@@ -157,5 +158,5 @@ public class GuidedTour extends MapActivity {
 			break;
 		} //end switch statement
 	} //end method onClick
-	*/
+	
 } //GuidedTour
