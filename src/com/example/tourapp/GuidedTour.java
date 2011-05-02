@@ -3,10 +3,11 @@ package com.example.tourapp;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
@@ -16,7 +17,6 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
-import com.google.android.maps.MapView.LayoutParams;
 
 public class GuidedTour extends MapActivity {
 	//map fields
@@ -27,9 +27,11 @@ public class GuidedTour extends MapActivity {
 	private MyItemizedOverlay mItemizedOverlay;
 	
 	//text fields
-	private TextView titleView;
-	private TextView descView;
+	private TextView mTitleView;
+	private TextView mDescView;
 
+	public ArrayList<PlaceObject> mListOfPlaces;
+	
 	//constants
 	private static final int NUM_PLACE_OBJ = 30; //temp
 	private static final int BALLOON_OPACITY = 200;
@@ -44,20 +46,12 @@ public class GuidedTour extends MapActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guidedtour);
+			
+		Bundle extras = getIntent().getExtras();
+		mListOfPlaces = extras.getParcelableArrayList("com.example.tourapp.placeArrayList");
 		
-		//temporary testing stuff
-		mManualListOfPlaceObjects = new ArrayList<PlaceObject>(NUM_PLACE_OBJ);
-		PlaceObject obj1 = new PlaceObject(0, "Mills Hall", "-122.18212", "37.779496", "This is a description of Mills Hall.","Start your tour here!", "this is a description of where you came from", "This is the name of an image for Mills Hall");
-		mManualListOfPlaceObjects.add(obj1);
-		PlaceObject obj2 = new PlaceObject(1, "Natural Sciences Building", "-122.180666", "37.780143", "This is a description of Natural Sciences Building","Directions from Mills Hall: These are directions to the building before the Natural Sciences Building", "this is a description of where you came from", "This is the name of an image for the Natural Sciences Building");
-		mManualListOfPlaceObjects.add(obj2);
-		PlaceObject obj3 = new PlaceObject(2, "Carnegie Hall", "-122.181645", "37.778995", "This is a description of Carnegie Hall","Directions from NSB: These are directions from the building before Carnegie Hall", "this is a description of where you came from", "This is the name of an image for Carnegie Hall");
-		mManualListOfPlaceObjects.add(obj3);
-		PlaceObject obj4 = new PlaceObject(3, "CPM", "-122.182791", "37.778726", "This is a description of CPM","From Carnegie Hall: These are directions from the building before CPM", "this is a description of where you came from", "This is the name of an image for CPM");
-		mManualListOfPlaceObjects.add(obj4);
-
-		PlaceObject currentPlace = obj1; //set to Mills Hall for testing purposes
-		
+		PlaceObject currentPlace = mListOfPlaces.get(1); //set to Mills Hall for testing purposes
+			
 		//map view
 		initMapView();
 		initMyLocation();
@@ -69,7 +63,7 @@ public class GuidedTour extends MapActivity {
 		mItemizedOverlay = new MyItemizedOverlay(mDrawable, mMapView);
 		
 		//Create balloon overlays using test arraylist
-		for (PlaceObject obj : mManualListOfPlaceObjects){
+		for (PlaceObject obj : mListOfPlaces){
 			double lat = Double.parseDouble(obj.getLat());
 			double lon = Double.parseDouble(obj.getLon());
 			createOverlay(lat, lon, obj.getId(), obj.getName(), obj.getDirFromPrev());
@@ -77,11 +71,14 @@ public class GuidedTour extends MapActivity {
 		mMapOverlays.add(mItemizedOverlay);
 		
 		//view stuff		
-		titleView = (TextView) findViewById(R.id.title_view);
-		titleView.setText(currentPlace.getName());
+		mTitleView = (TextView) findViewById(R.id.title_view);
+		mTitleView.setText(currentPlace.getName());
 		
-		descView = (TextView) findViewById(R.id.desc_view);
-		descView.setText(currentPlace.getDescription());
+		mDescView = (TextView) findViewById(R.id.desc_view);
+		mDescView.setText(currentPlace.getDescription());
+		
+		//findViewById(R.id.button_prev).setOnClickListener(this);
+		//findViewById(R.id.button_next).setOnClickListener(this);
 	} //onCreate
 	
 	//helper methods
@@ -136,4 +133,29 @@ public class GuidedTour extends MapActivity {
 	protected boolean isRouteDisplayed() {
 		return false;
 	} //isRouteDisplayed
+	
+	
+	/**
+	 * cannot decide whether to try to 
+	 */
+	
+	/*
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()){
+		case R.id.button_guided_tour:
+			Intent i1 = new Intent (this, GuidedTour.class);
+			i1.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
+			startActivity(i1);
+			break;
+		case R.id.button_division_list:
+			Intent i2 = new Intent (this, DivisionList.class);
+			i2.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
+			startActivity(i2);
+			break;
+		default:
+			break;
+		} //end switch statement
+	} //end method onClick
+	*/
 } //GuidedTour

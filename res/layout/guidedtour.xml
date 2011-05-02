@@ -73,7 +73,8 @@
 			android:layout_height="wrap_content"
 			android:includeFontPadding="true">
 		</TextView>
-	
+			
+		<!-- holds buttons for previous and next place -->
+		
 	</LinearLayout>
-
 </LinearLayout>

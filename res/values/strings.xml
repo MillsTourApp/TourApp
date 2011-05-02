@@ -4,6 +4,8 @@
     <string name="app_name">TourApp</string>
     <string name="button_on_location">On Campus</string>
     <string name="button_off_location">Off Campus</string>
+    <string name="button_prev_text">Previous</string>
+    <string name="button_next_text">Next</string>
     <string name="welcome">Greetings from Mills!  Please choose one:</string>
     <string name="guidedtourwelcome">Guided Tour</string>
     <string name="divisionactivitywelcome">Choose a Department</string>
