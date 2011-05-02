@@ -31,6 +31,7 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	private TextView mDescView;
 
 	public ArrayList<PlaceObject> mListOfPlaces;
+	public static int mCurrentPlaceId;
 	
 	//constants
 	private static final int BALLOON_OPACITY = 200;
@@ -46,12 +47,12 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guidedtour);
 		
-		int currentPlaceId = 1;
+//		int currentPlaceId = 1;
 		
 		Bundle extras = getIntent().getExtras();
 		mListOfPlaces = extras.getParcelableArrayList("com.example.tourapp.placeArrayList");
 		
-		PlaceObject currentPlace = mListOfPlaces.get(currentPlaceId); //set to Mills Hall for testing purposes
+		PlaceObject currentPlace = mListOfPlaces.get(mCurrentPlaceId); //set to Mills Hall for testing purposes
 			
 		//map view
 		initMapView();
@@ -78,8 +79,8 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		mDescView = (TextView) findViewById(R.id.desc_view);
 		mDescView.setText(currentPlace.getDescription());
 		
-		//findViewById(R.id.button_prev).setOnClickListener(this);
-		//findViewById(R.id.button_next).setOnClickListener(this);
+		findViewById(R.id.button_prev).setOnClickListener(this);
+		findViewById(R.id.button_next).setOnClickListener(this);
 	} //onCreate
 	
 	//helper methods
@@ -144,13 +145,15 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()){
-		case R.id.button_guided_tour:
+		case R.id.button_prev:
+			mCurrentPlaceId--;
 			Intent i1 = new Intent (this, GuidedTour.class);
 			i1.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
 			startActivity(i1);
 			break;
-		case R.id.button_division_list:
-			Intent i2 = new Intent (this, DivisionList.class);
+		case R.id.button_next:
+			mCurrentPlaceId++;
+			Intent i2 = new Intent (this, GuidedTour.class);
 			i2.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
 			startActivity(i2);
 			break;
