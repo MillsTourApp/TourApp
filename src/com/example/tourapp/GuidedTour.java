@@ -18,7 +18,7 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
-public class GuidedTour extends MapActivity {
+public class GuidedTour extends MapActivity implements OnClickListener {
 	//map fields
 	private MapView mMapView;
 	private List<Overlay> mMapOverlays;
@@ -31,13 +31,14 @@ public class GuidedTour extends MapActivity {
 	private TextView mDescView;
 
 	public ArrayList<PlaceObject> mListOfPlaces;
+	public static int mCurrentPlaceId;
 	
 	//constants
-	private static final int NUM_PLACE_OBJ = 30; //temp
 	private static final int BALLOON_OPACITY = 200;
 	private static final int MAP_ZOOM = 18;
 	private static final double NORMALIZE_COORDINATES = 1E6;
 	
+	//change? appears in changeTextOfDisplayedObject
 	//test arraylist
 	private ArrayList<PlaceObject> mManualListOfPlaceObjects;
 
@@ -50,7 +51,7 @@ public class GuidedTour extends MapActivity {
 		Bundle extras = getIntent().getExtras();
 		mListOfPlaces = extras.getParcelableArrayList("com.example.tourapp.placeArrayList");
 		
-		PlaceObject currentPlace = mListOfPlaces.get(1); //set to Mills Hall for testing purposes
+		PlaceObject currentPlace = mListOfPlaces.get(mCurrentPlaceId); //initial object is Mills Hall
 			
 		//map view
 		initMapView();
@@ -77,8 +78,8 @@ public class GuidedTour extends MapActivity {
 		mDescView = (TextView) findViewById(R.id.desc_view);
 		mDescView.setText(currentPlace.getDescription());
 		
-		//findViewById(R.id.button_prev).setOnClickListener(this);
-		//findViewById(R.id.button_next).setOnClickListener(this);
+		findViewById(R.id.button_prev).setOnClickListener(this);
+		findViewById(R.id.button_next).setOnClickListener(this);
 	} //onCreate
 	
 	//helper methods
@@ -134,28 +135,30 @@ public class GuidedTour extends MapActivity {
 		return false;
 	} //isRouteDisplayed
 	
-	
 	/**
-	 * cannot decide whether to try to 
+	 * sends the user to next or previous point on the tour
 	 */
-	
-	/*
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()){
-		case R.id.button_guided_tour:
-			Intent i1 = new Intent (this, GuidedTour.class);
-			i1.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
-			startActivity(i1);
+		case R.id.button_prev:
+			if(mCurrentPlaceId >= 1) {
+				mCurrentPlaceId--;
+			} //if
+			Intent iPrev = new Intent (this, GuidedTour.class);
+			iPrev.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
+			startActivity(iPrev);
 			break;
-		case R.id.button_division_list:
-			Intent i2 = new Intent (this, DivisionList.class);
-			i2.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
-			startActivity(i2);
+		case R.id.button_next:
+			if(mCurrentPlaceId < mListOfPlaces.size()) {
+				mCurrentPlaceId++;
+			} //if
+			Intent iNext = new Intent (this, GuidedTour.class);
+			iNext.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
+			startActivity(iNext);
 			break;
 		default:
 			break;
 		} //end switch statement
 	} //end method onClick
-	*/
 } //GuidedTour
