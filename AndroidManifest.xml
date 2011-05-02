@@ -22,6 +22,10 @@
                 <action android:name="android.intent.action.ONLOCATIONMENU" />
                 <category android:name="android.intent.category.LAUNCHER" />
         </activity>
+        <activity android:name=".Place">
+                <action android:name="android.intent.action.PLACE" />
+                <category android:name="android.intent.category.LAUNCHER" />
+        </activity>
         <activity android:name=".GuidedTour">
                 <action android:name="android.intent.action.GUIDEDTOUR" />
                 <category android:name="android.intent.category.LAUNCHER" />
