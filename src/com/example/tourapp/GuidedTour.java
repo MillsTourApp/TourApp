@@ -47,8 +47,6 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guidedtour);
 		
-//		int currentPlaceId = 1;
-		
 		Bundle extras = getIntent().getExtras();
 		mListOfPlaces = extras.getParcelableArrayList("com.example.tourapp.placeArrayList");
 		
@@ -138,24 +136,26 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	
 	
 	/**
-	 * cannot decide whether to try to 
+	 * sends the user to next or previous point on the tour
 	 */
-	
-	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()){
 		case R.id.button_prev:
-			mCurrentPlaceId--;
-			Intent i1 = new Intent (this, GuidedTour.class);
-			i1.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
-			startActivity(i1);
+			if(mCurrentPlaceId >= 1) {
+				mCurrentPlaceId--;
+			}
+			Intent iPrev = new Intent (this, GuidedTour.class);
+			iPrev.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
+			startActivity(iPrev);
 			break;
 		case R.id.button_next:
-			mCurrentPlaceId++;
-			Intent i2 = new Intent (this, GuidedTour.class);
-			i2.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
-			startActivity(i2);
+			if(mCurrentPlaceId < mListOfPlaces.size()) {
+				mCurrentPlaceId++;
+			}
+			Intent iNext = new Intent (this, GuidedTour.class);
+			iNext.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
+			startActivity(iNext);
 			break;
 		default:
 			break;

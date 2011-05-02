@@ -41,7 +41,7 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()){
 		case R.id.button_guided_tour:
-			GuidedTour.mCurrentPlaceId = 1;
+			GuidedTour.mCurrentPlaceId = 0;
 			Intent i1 = new Intent (this, GuidedTour.class);
 			i1.putParcelableArrayListExtra("com.example.tourapp.divisionArrayList", listOfDivisions);
 			i1.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", listOfPlaces);
