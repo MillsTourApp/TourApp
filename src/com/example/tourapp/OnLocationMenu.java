@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class OnLocationMenu extends Activity implements OnClickListener {
 	public ArrayList<DivisionObject> listOfDivisions;
 	public ArrayList<PlaceObject> listOfPlaces;
+	private static final int TOUR_START_LOCATION = 0; //the guided tour starts at the first object
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()){
 		case R.id.button_guided_tour:
-			GuidedTour.mCurrentPlaceId = 0;
+			GuidedTour.mCurrentPlaceId = TOUR_START_LOCATION;
 			Intent i1 = new Intent (this, GuidedTour.class);
 			i1.putParcelableArrayListExtra("com.example.tourapp.divisionArrayList", listOfDivisions);
 			i1.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", listOfPlaces);

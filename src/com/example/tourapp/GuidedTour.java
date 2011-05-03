@@ -29,7 +29,6 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	//text fields
 	private TextView mTitleView;
 	private TextView mDescView;
-
 	public ArrayList<PlaceObject> mListOfPlaces;
 	public static int mCurrentPlaceId;
 	
@@ -41,16 +40,13 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	//change? appears in changeTextOfDisplayedObject
 	//test arraylist
 	private ArrayList<PlaceObject> mManualListOfPlaceObjects;
-
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guidedtour);
-			
 		Bundle extras = getIntent().getExtras();
 		mListOfPlaces = extras.getParcelableArrayList("com.example.tourapp.placeArrayList");
-		
 		PlaceObject currentPlace = mListOfPlaces.get(mCurrentPlaceId); //initial object is Mills Hall
 			
 		//map view
@@ -69,15 +65,14 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 			double lon = Double.parseDouble(obj.getLon());
 			createOverlay(lat, lon, obj.getId(), obj.getName(), obj.getDirFromPrev());
 		} //for
+		
 		mMapOverlays.add(mItemizedOverlay);
 		
 		//view stuff		
 		mTitleView = (TextView) findViewById(R.id.title_view);
 		mTitleView.setText(currentPlace.getName());
-		
 		mDescView = (TextView) findViewById(R.id.desc_view);
 		mDescView.setText(currentPlace.getDescription());
-		
 		findViewById(R.id.button_prev).setOnClickListener(this);
 		findViewById(R.id.button_next).setOnClickListener(this);
 	} //onCreate
@@ -156,8 +151,6 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 			Intent iNext = new Intent (this, GuidedTour.class);
 			iNext.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
 			startActivity(iNext);
-			break;
-		default:
 			break;
 		} //end switch statement
 	} //end method onClick
