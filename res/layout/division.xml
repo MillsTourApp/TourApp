@@ -3,37 +3,57 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/mills_blue"
+    android:gravity="center_horizontal"
     >
     <ImageView
     android:id="@+id/divisionimage"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
+    android:layout_width="300dip" 
+    android:layout_height="200dip" 
+    android:scaleType="fitCenter"
+    android:paddingTop="2dip"
+    android:paddingBottom="2dip"
+    android:src="@drawable/chapel_01"
     /> 
     <TextView  
     android:id="@+id/division_name"
     android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
+    android:layout_height="wrap_content"
+	android:textSize="15dip"
+	android:textColor="#FFFFFF"
+	android:textStyle="bold"
+    android:paddingBottom="2dip"
     />
     <TextView
     android:id="@+id/division_descript"
     android:layout_width="fill_parent" 
-    android:layout_height="120dip" 
-    android:maxLines ="8"
-    android:scrollbars="vertical"
+	android:textColor="#FFFFFF"
+    android:paddingLeft="4dip" 
+    android:scrollbars="vertical" 
+    android:layout_height="150dip" 
+    android:maxLines="10"
+    android:paddingRight="2dip"
     />
     <TextView
     android:id="@+id/divisionphone"
     android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
+    android:layout_height="wrap_content"
+	android:textColor="#FFFFFF"
+    android:paddingLeft="2dip"
     />
     <TextView
     android:id="@+id/divisionemail"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
+    android:text="email"
+	android:textColor="#FFFFFF"
+    android:paddingLeft="2dip"
     />
     <TextView
     android:id="@+id/divisionwebsite"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
+	android:textColor="#FFFFFF"
+    android:paddingLeft="2dip"
     />
 </LinearLayout>

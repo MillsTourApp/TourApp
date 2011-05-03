@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, TourApp!</string>
-    <string name="app_name">TourApp</string>
+    <string name="app_name">Tour Mills College</string>
     <string name="button_on_location">On Campus</string>
     <string name="button_off_location">Off Campus</string>
     <string name="button_prev_text">Previous</string>
     <string name="button_next_text">Next</string>
-    <string name="welcome">Greetings from Mills!  Please choose one:</string>
+    <string name="welcome">Greetings from Mills! \nPlease choose one:</string>
     <string name="guidedtourwelcome">Guided Tour</string>
     <string name="divisionactivitywelcome">Choose a Department</string>
     <string name="divisionwelcome">This is an individual division page.</string>

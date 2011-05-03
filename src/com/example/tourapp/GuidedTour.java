@@ -37,10 +37,6 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	private static final int MAP_ZOOM = 18;
 	private static final double NORMALIZE_COORDINATES = 1E6;
 	
-	//change? appears in changeTextOfDisplayedObject
-	//test arraylist
-	private ArrayList<PlaceObject> mManualListOfPlaceObjects;
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,6 +64,17 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		
 		mMapOverlays.add(mItemizedOverlay);
 		
+		//create new GeoPoint from currentPlace and set focus of map to that point
+		//probably inefficient to create another GeoPoint; we should modify place
+		//to have a GeoPoint member variable.  We'd have to extend GeoPoint to make it
+		//Parcelable
+		mController.animateTo(
+		new GeoPoint(
+				(int)((Double.parseDouble(currentPlace.getLat()))*NORMALIZE_COORDINATES ),
+				(int)((Double.parseDouble(currentPlace.getLon()))*NORMALIZE_COORDINATES)
+				)
+		);
+		
 		//view stuff		
 		mTitleView = (TextView) findViewById(R.id.title_view);
 		mTitleView.setText(currentPlace.getName());
@@ -75,6 +82,7 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		mDescView.setText(currentPlace.getDescription());
 		findViewById(R.id.button_prev).setOnClickListener(this);
 		findViewById(R.id.button_next).setOnClickListener(this);
+		findViewById(R.id.button_main_from_tour).setOnClickListener(this);
 	} //onCreate
 	
 	//helper methods
@@ -116,11 +124,11 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		mItemizedOverlay.addOverlay(overlayItem);
 	} //createOverlay
 
-	public String getTextOfSelectedBalloon(int index){
+/*	public String getTextOfSelectedBalloon(int index){
 		PlaceObject obj = mManualListOfPlaceObjects.get(index);
 		return obj.getDescription();	
 	} //getTextOfSelectedBalloon
-	
+*/	
 	/**
 	 * Specifies whether there is a route displayed
 	 * @return True is a route is displayed, false if there is not a route displayed
@@ -152,6 +160,9 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 			iNext.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
 			startActivity(iNext);
 			break;
+		case R.id.button_main_from_tour:
+			Intent main = new Intent(this, TourApp.class);
+			startActivity(main);
 		} //end switch statement
 	} //end method onClick
 } //GuidedTour

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="mills_blue">#FF092A6E</color>
+  <color name ="mills_blue_transparent">#99092A6E</color>
+  <color name="mills_orange">#FFFF8C00</color>
+  <color name="mills_orange_transparent">#CCFF8C00</color>
+
+</resources>

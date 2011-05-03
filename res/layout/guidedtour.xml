@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/rellayout"
-	android:orientation="vertical"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:background="#092a6e">
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/rellayout"
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:background="#092a6e">
 
-	<!-- frame padding, top -->
-	<LinearLayout
-		android:orientation="vertical"
-		android:layout_width="fill_parent"
-		android:layout_height="10dip">
-	</LinearLayout>
+<!-- frame padding, top -->
+<LinearLayout
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="10dip">
+</LinearLayout>
 
-	<LinearLayout
-		android:id="@+id/upper_view"
-		android:orientation="horizontal"
-		android:layout_width="fill_parent"
-		android:layout_height="200dip">
+<LinearLayout
+android:id="@+id/upper_view"
+android:orientation="horizontal"
+android:layout_width="fill_parent"
+android:layout_height="200dip">
 
-		<!-- frame padding, left -->
-		<LinearLayout
-			android:gravity="center_horizontal"
-			android:layout_width="20dip"
-			android:layout_height="fill_parent"
-			android:layout_weight="1">
-		</LinearLayout>
+<!-- frame padding, left -->
+<LinearLayout
+android:gravity="center_horizontal"
+android:layout_width="20dip"
+android:layout_height="fill_parent"
+android:layout_weight="1">
+</LinearLayout>
 
-		<!-- part of layout corresponding to map -->
+		 <!--part of layout corresponding to map-->
 		<com.google.android.maps.MapView
 			android:id="@+id/mapview"
 			android:layout_width="fill_parent"
@@ -37,17 +37,17 @@
 			android:layout_weight="1"
 			android:enabled="true"
 			android:clickable="true"
-			android:apiKey="0jCdtB6aVh4NuUI3vp9_vwuWSMI8fC2khPMN7pA" />
+			android:apiKey="0e3XhzQFcQ6wCiBZVayRXVzDfvkBhFPyJqQOT5A" />
 
-		<!-- frame padding, right -->
-		<LinearLayout
-			android:gravity="center_horizontal"
-			android:layout_width="20dip"
-			android:layout_height="fill_parent"
-			android:layout_weight="1">
-		</LinearLayout>
-	
-	</LinearLayout>
+<!-- frame padding, right -->
+<LinearLayout
+android:gravity="center_horizontal"
+android:layout_width="20dip"
+android:layout_height="fill_parent"
+android:layout_weight="1">
+</LinearLayout>
+
+</LinearLayout>
 	<ScrollView
 		android:id="@+id/ScrollView01"
 		android:layout_width="fill_parent"
@@ -68,8 +68,11 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:includeFontPadding="true"
-				android:layout_gravity="center_horizontal"
 				android:textStyle="bold"
+				android:textColor="#FFFFFF"
+				android:paddingTop="2dip"
+				android:paddingBottom="2dip"
+				android:paddingLeft="2dip"
 				>
 			</TextView>
 	
@@ -78,7 +81,9 @@
 				android:text="@+id/description"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:includeFontPadding="true">
+				android:includeFontPadding="true"
+				android:textColor="#FFFFFF"
+				android:paddingBottom="2dip">
 			</TextView>
 			
 			<!-- holds buttons for previous and next place -->
@@ -91,6 +96,9 @@
     				android:text="@string/button_prev_text"
     				android:layout_width="120dip"
     				android:layout_height="wrap_content"
+    				android:background="@color/mills_orange"
+    				android:textColor="#FFFFFF"
+    				android:textStyle="bold"
     				android:layout_gravity="left"/>   
     				
     			<!-- filler -->
@@ -102,9 +110,23 @@
     				android:id="@+id/button_next"
     				android:text="@string/button_next_text"
     				android:layout_width="120dip"
-    				android:layout_height="wrap_content"
+    				android:background="@color/mills_orange"
+    				android:textColor="#FFFFFF"
+    				android:textStyle="bold"
+       				android:layout_height="wrap_content"
     				android:layout_alignParentRight="true"/>     
 			</TableRow>	
+				<Button 
+	android:id="@+id/button_main_from_tour"
+	android:text="Return to the Main Menu"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/mills_blue_transparent"
+	android:paddingTop="2dip"
+	android:textColor="#FFFFFF"
+	/>
 		</LinearLayout>
 	</ScrollView>
+
+	
 </LinearLayout>

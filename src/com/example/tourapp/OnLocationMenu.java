@@ -1,13 +1,11 @@
 package com.example.tourapp;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 
 public class OnLocationMenu extends Activity implements OnClickListener {
 	public ArrayList<DivisionObject> listOfDivisions;
@@ -26,16 +24,6 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 		Bundle extras = getIntent().getExtras();
 		listOfDivisions = extras.getParcelableArrayList("com.example.tourapp.divisionArrayList");
 		listOfPlaces = extras.getParcelableArrayList("com.example.tourapp.placeArrayList");
-		
-		TextView test = (TextView) findViewById(R.id.onlocationtest);
-		
-		String testManualArray = "";
-		for (DivisionObject obj:listOfDivisions){
-			testManualArray+= obj.getName() + "\n";
-		}
-		
-		test.setText(testManualArray);
-		
 	}//end method onCreate
 
 	@Override
@@ -55,7 +43,7 @@ public class OnLocationMenu extends Activity implements OnClickListener {
 			startActivity(i2);
 			break;
 		case R.id.button_division_1:
-			Intent i3 = new Intent (this, Division.class);
+			Intent i3 = new Intent (this, Admission.class);
 			i3.putParcelableArrayListExtra("com.example.tourapp.divisionArrayList", listOfDivisions);
 			i3.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", listOfPlaces);
 			startActivity(i3);

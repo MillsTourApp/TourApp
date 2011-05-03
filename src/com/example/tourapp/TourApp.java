@@ -12,7 +12,7 @@ import android.widget.Button;
 
 public class TourApp extends Activity {
 	
-	public Database database = new Database(this, "division.txt", "fullDivision2.db");
+	public Database database = new Database(this, "database.txt", "fullDatabase.db");
 	private static String TABLE_NAME1 = "Place";
 	private static String TABLE_NAME2 = "Division";
 	private static String[] PLACEFROM = {"_id", "name", "lon", "lat", "description", "directionsFromPrevious", "directionsToNext", "imageName"};

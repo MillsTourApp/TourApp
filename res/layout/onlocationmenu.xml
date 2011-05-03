@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
-    <TextView
-    android:id="@+id/onlocationtest"
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    />
+    android:background="@drawable/onlocation" android:gravity="bottom|right">
 	<Button android:id="@+id/button_guided_tour"
     	android:text="@string/button_guided_tour"
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
+    	android:layout_width="150dip"
+    	android:layout_height="50dip"
+    	android:layout_marginBottom="5dip"
+    	android:textColor="#FFFFFF"
+    	android:textStyle="bold"
+    	android:background="@color/mills_blue_transparent"
+    	android:layout_alignParentRight="true"
+    	android:gravity="center_vertical"
+    	android:paddingLeft="5dip"
     	 />    
     <Button android:id="@+id/button_division_list"
     	android:text="@string/button_division_list"
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	 />   
+    	android:layout_width="150dip"
+    	android:layout_height="50dip"
+    	android:layout_marginBottom="5dip"
+    	android:textColor="#FFFFFF"
+    	android:textStyle="bold"
+    	android:background="@color/mills_blue_transparent"
+    	android:layout_alignParentRight="true"
+    	android:gravity="center_vertical"
+    	android:layout_below="@id/button_guided_tour"
+    	android:paddingLeft="5dip"
+       	 />   
     <Button android:id="@+id/button_division_1"
     	android:text="@string/button_division_1"
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	 />     
-</LinearLayout>
+    	android:layout_width="150dip"
+    	android:layout_height="50dip"
+    	android:layout_marginBottom="5dip"
+    	android:textColor="#FFFFFF"
+    	android:textStyle="bold"
+    	android:background="@color/mills_blue_transparent"
+    	android:gravity="center_vertical"    	
+        android:layout_alignParentRight="true"
+    	android:layout_below="@id/button_division_list"
+    	android:paddingLeft="5dip"
+       	 />
+</RelativeLayout>
