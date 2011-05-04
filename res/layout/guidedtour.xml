@@ -37,7 +37,7 @@ android:layout_weight="1">
 			android:layout_weight="1"
 			android:enabled="true"
 			android:clickable="true"
-			android:apiKey="0e3XhzQFcQ6wCiBZVayRXVzDfvkBhFPyJqQOT5A" />
+			android:apiKey="09M4MmK4tMtK-biKBq3v8FyX4OcjH3Z8jQoPpAA" />
 
 <!-- frame padding, right -->
 <LinearLayout
