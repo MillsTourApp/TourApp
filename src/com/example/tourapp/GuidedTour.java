@@ -62,8 +62,8 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 			createOverlay(lat, lon, obj.getId(), obj.getName(), obj.getDirFromPrev());
 		} //for
 		
+		//Add overlays to list of overlays
 		mMapOverlays.add(mItemizedOverlay);
-		
 		//create new GeoPoint from currentPlace and set focus of map to that point
 		//probably inefficient to create another GeoPoint; we should modify place
 		//to have a GeoPoint member variable.  We'd have to extend GeoPoint to make it
@@ -74,7 +74,6 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 				(int)((Double.parseDouble(currentPlace.getLon()))*NORMALIZE_COORDINATES)
 				)
 		);
-		
 		//view stuff		
 		mTitleView = (TextView) findViewById(R.id.title_view);
 		mTitleView.setText(currentPlace.getName());
