@@ -21,17 +21,18 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
+import com.androidmapballoons.library.BalloonItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
 public class MyItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
 
 	private ArrayList<OverlayItem> m_overlays = new ArrayList<OverlayItem>();
-	private Context c;
+	//private Context c;
 	
 	public MyItemizedOverlay(Drawable defaultMarker, MapView mapView) {
 		super(boundCenter(defaultMarker), mapView);
-		c = mapView.getContext();
+	//	c = mapView.getContext();
 	}
 
 	public void addOverlay(OverlayItem overlay) {
@@ -48,13 +49,5 @@ public class MyItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
 	public int size() {
 		return m_overlays.size();
 	}
-
-	/*@Override
-	protected boolean onBalloonTap(int index, OverlayItem item) {
-		index++; //so that location number 1 is 1 rather than 0 on the tour
-		Toast.makeText(c, "Destination number " + index + " on your guided tour!",
-				Toast.LENGTH_LONG).show();
-		return true;
-	}*/
 	
 }
