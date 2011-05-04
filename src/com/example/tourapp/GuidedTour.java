@@ -152,7 +152,7 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 			startActivity(iPrev);
 			break;
 		case R.id.button_next:
-			if(mCurrentPlaceId < mListOfPlaces.size()) {
+			if(mCurrentPlaceId < mListOfPlaces.size() - 1) {
 				mCurrentPlaceId++;
 			} //if
 			Intent iNext = new Intent (this, GuidedTour.class);
