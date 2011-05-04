@@ -117,14 +117,14 @@ android:layout_weight="1">
     				android:layout_alignParentRight="true"/>     
 			</TableRow>	
 				<Button 
-	android:id="@+id/button_main_from_tour"
-	android:text="Return to the Main Menu"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:background="@color/mills_blue_transparent"
-	android:paddingTop="2dip"
-	android:textColor="#FFFFFF"
-	/>
+					android:id="@+id/button_main_from_tour"
+					android:text="Return to the Main Menu"
+					android:layout_height="wrap_content"
+					android:background="@color/mills_blue_transparent"
+					android:paddingTop="2dip"
+					android:textColor="#FFFFFF"
+					android:layout_width="wrap_content"
+					android:layout_gravity="center"/>
 		</LinearLayout>
 	</ScrollView>
 
