@@ -51,8 +51,8 @@ public class TourApp extends Activity {
 		while(placeCursor.moveToNext()){
 			int ID = placeCursor.getInt(0);
 			String name = placeCursor.getString(1);
-			String lon = placeCursor.getString(2);
-			String lat = placeCursor.getString(3);
+			double lon = placeCursor.getDouble(2);
+			double lat = placeCursor.getDouble(3);
 			String description = placeCursor.getString(4);
 			String dirFromPrev = placeCursor.getString(5);
 			String dirToNext = placeCursor.getString(6);
