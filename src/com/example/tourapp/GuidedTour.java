@@ -117,7 +117,7 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	public void createOverlay (double lat, double lon, int id, String name, String directions){
 		GeoPoint point = new GeoPoint((int)(lat*NORMALIZE_COORDINATES ),(int)(lon*NORMALIZE_COORDINATES));
 		id++; //So id starts at 1, not 0
-		OverlayItem overlayItem = new OverlayItem(point, id + ". "+ name, lat+ " " +lon + " " + directions);
+		OverlayItem overlayItem = new OverlayItem(point, id + ". "+ name, directions);
 		mItemizedOverlay.addOverlay(overlayItem);
 	} //createOverlay
 	
