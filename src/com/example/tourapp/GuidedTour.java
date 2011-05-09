@@ -25,18 +25,18 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	private MapController mController;
 	private Drawable mDrawable;
 	private MyItemizedOverlay mItemizedOverlay;
-	
+
 	//text fields
 	private TextView mTitleView;
 	private TextView mDescView;
 	public ArrayList<PlaceObject> mListOfPlaces;
 	public static int mCurrentPlaceId;
-	
+
 	//constants
 	private static final int BALLOON_OPACITY = 200;
 	private static final int MAP_ZOOM = 18;
 	private static final double NORMALIZE_COORDINATES = 1E6;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,24 +44,22 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		Bundle extras = getIntent().getExtras();
 		mListOfPlaces = extras.getParcelableArrayList("com.example.tourapp.placeArrayList");
 		PlaceObject currentPlace = mListOfPlaces.get(mCurrentPlaceId); //initial object is Mills Hall
-			
+
 		//map view
 		initMapView();
 		initMyLocation();
 		mMapOverlays = mMapView.getOverlays();
-		
+
 		// create itemized overlay
 		mDrawable = getResources().getDrawable(R.drawable.marker);
 		mDrawable.setAlpha(BALLOON_OPACITY);
 		mItemizedOverlay = new MyItemizedOverlay(mDrawable, mMapView);
-		
+
 		//Create balloon overlays using test arraylist
 		for (PlaceObject obj : mListOfPlaces){
-			double lat = Double.parseDouble(obj.getLat());
-			double lon = Double.parseDouble(obj.getLon());
-			createOverlay(lat, lon, obj.getId(), obj.getName(), obj.getDirFromPrev());
+			createOverlay(obj.lat, obj.lon, obj.getId(), obj.getName(), obj.getDirFromPrev());
 		} //for
-		
+
 		//Add overlays to list of overlays
 		mMapOverlays.add(mItemizedOverlay);
 		//create new GeoPoint from currentPlace and set focus of map to that point
@@ -69,9 +67,9 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		//to have a GeoPoint member variable.  We'd have to extend GeoPoint to make it
 		//Parcelable
 		mController.animateTo(
-		new GeoPoint(
-				(int)((Double.parseDouble(currentPlace.getLat()))*NORMALIZE_COORDINATES ),
-				(int)((Double.parseDouble(currentPlace.getLon()))*NORMALIZE_COORDINATES)
+				new GeoPoint(
+						(int)(currentPlace.getLat()*NORMALIZE_COORDINATES ),
+						(int)(currentPlace.getLon()*NORMALIZE_COORDINATES)
 				)
 		);
 		//view stuff		
@@ -83,7 +81,7 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		findViewById(R.id.button_next).setOnClickListener(this);
 		findViewById(R.id.button_main_from_tour).setOnClickListener(this);
 	} //onCreate
-	
+
 	//helper methods
 	/** Find and initialize the map view. (From Hello Android tutorial)*/
 	private void initMapView() {
@@ -119,15 +117,10 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	public void createOverlay (double lat, double lon, int id, String name, String directions){
 		GeoPoint point = new GeoPoint((int)(lat*NORMALIZE_COORDINATES ),(int)(lon*NORMALIZE_COORDINATES));
 		id++; //So id starts at 1, not 0
-		OverlayItem overlayItem = new OverlayItem(point, id + ". "+ name, directions);
+		OverlayItem overlayItem = new OverlayItem(point, id + ". "+ name, lat+ " " +lon + " " + directions);
 		mItemizedOverlay.addOverlay(overlayItem);
 	} //createOverlay
-
-/*	public String getTextOfSelectedBalloon(int index){
-		PlaceObject obj = mManualListOfPlaceObjects.get(index);
-		return obj.getDescription();	
-	} //getTextOfSelectedBalloon
-*/	
+	
 	/**
 	 * Specifies whether there is a route displayed
 	 * @return True is a route is displayed, false if there is not a route displayed
@@ -136,7 +129,7 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	protected boolean isRouteDisplayed() {
 		return false;
 	} //isRouteDisplayed
-	
+
 	/**
 	 * sends the user to next or previous point on the tour
 	 */
