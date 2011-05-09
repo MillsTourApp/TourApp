@@ -6,8 +6,8 @@ import android.os.Parcelable;
 public class PlaceObject implements Parcelable {
 	int ID;
 	String name;
-	String lon;
-	String lat;
+	double lon;
+	double lat;
 	String description;
 	String dirFromPrev;
 	String dirToNext;
@@ -16,8 +16,8 @@ public class PlaceObject implements Parcelable {
 	public PlaceObject (
 			int IdPassed, 
 			String namePassed, 
-			String lonPassed, 
-			String latPassed,
+			double lonPassed,
+			double latPassed,
 			String descriptionPassed,
 			String dirFromPrevPassed, 
 			String dirToNextPassed,
@@ -36,8 +36,8 @@ public class PlaceObject implements Parcelable {
     public PlaceObject (Parcel source){
     	ID = source.readInt();
         name = source.readString();
-        lon = source.readString();
-        lat = source.readString();
+        lon = source.readDouble();
+        lat = source.readDouble();
         description = source.readString();
         dirFromPrev = source.readString();
         dirToNext = source.readString();
@@ -52,11 +52,11 @@ public class PlaceObject implements Parcelable {
 		return name;
 	}
 	
-	public String getLon(){
+	public double getLon(){
 		return lon;
 	}
 	
-	public String getLat(){
+	public double getLat(){
 		return lat;
 	}
 	
@@ -85,8 +85,8 @@ public class PlaceObject implements Parcelable {
 	public void writeToParcel(Parcel parcel, int flags) {
 		parcel.writeInt(ID);
 		parcel.writeString(name);
-		parcel.writeString(lon);
-		parcel.writeString(lat);
+		parcel.writeDouble(lon);
+		parcel.writeDouble(lat);
 		parcel.writeString(description);
 		parcel.writeString(dirFromPrev);
 		parcel.writeString(dirToNext);
