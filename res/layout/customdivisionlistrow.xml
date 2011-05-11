@@ -6,10 +6,9 @@
 	android:background="@color/mills_blue">
 	<TextView android:id="@+id/divisionlistname" 
 		android:layout_width="fill_parent"
-		android:layout_height="25dip"
+		android:layout_height="35dip"
 		android:textSize="20dip"
 		android:textStyle="bold" 
 		android:textColor="#FFFFFF"
 		 />
-
 </LinearLayout>
