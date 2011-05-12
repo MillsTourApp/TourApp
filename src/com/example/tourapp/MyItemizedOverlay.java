@@ -1,5 +1,5 @@
 package com.example.tourapp;
-
+//From an example that uses androidballoonoverlays libraries
 /***
  * Copyright (c) 2010 readyState Software Ltd
  * 
@@ -16,35 +16,48 @@ package com.example.tourapp;
  */
 
 import java.util.ArrayList;
-
 import android.graphics.drawable.Drawable;
 import com.androidmapballoons.library.BalloonItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
 public class MyItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
-
+	//ArrayLists for overlayItems that will be mapped
 	private ArrayList<OverlayItem> m_overlays = new ArrayList<OverlayItem>();
-	//private Context c;
 	
+	/**
+	 * Defines the default marker and map view for each of the overlay items
+	 * @param defaultMarker image used to create overlays
+	 * @param mapView MapView for overlays
+	 */
 	public MyItemizedOverlay(Drawable defaultMarker, MapView mapView) {
 		super(boundCenter(defaultMarker), mapView);
-	//	c = mapView.getContext();
-	}
+	}//MyItemizedOverlay constructor
 
+	/**
+	 * Adds overlay items to m_overlays
+	 * @param overlay OverlayItem to be added
+	 */
 	public void addOverlay(OverlayItem overlay) {
 	    m_overlays.add(overlay);
 	    populate();
-	}
+	}//addOverlay
 
+	/**
+	 * Retrieves each overlay item
+	 * @param i index of overlay to be retrieved
+	 */
 	@Override
 	protected OverlayItem createItem(int i) {
 		return m_overlays.get(i);
-	}
+	}//createItem
 
+	/**
+	 * Finds size of m_overlay ArrayList
+	 * @return size of m_overlay ArrayList
+	 */
 	@Override
 	public int size() {
 		return m_overlays.size();
-	}
-	
-}
+	}//size()
+}//MyItemizedOverlay
