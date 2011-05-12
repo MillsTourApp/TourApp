@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class DivisionBaseAdapter extends BaseAdapter{
 	//ArrayList of objects of class DivisionObject with which to populate the ListView
 	/**ArrayList of objects of class DivisionObject with which to populate the ListView*/
-	public static ArrayList<DivisionObject> listOfDivObjects;
+	private static ArrayList<DivisionObject> mListOfDivObjects;
 	//LayoutInflator to build Views from the customdivisionlistrow.xml file
 	/**Used to build Views from the customdivisionlistrow.xml file*/
 	private LayoutInflater mInflater;
@@ -29,7 +29,7 @@ public class DivisionBaseAdapter extends BaseAdapter{
 	 * @param list ArrayList of objects of class DivisionObject, whose content will populate the ListView
 	 * */
 	public DivisionBaseAdapter (Context context, ArrayList<DivisionObject> list){
-		listOfDivObjects = list;
+		mListOfDivObjects = list;
 		mInflater = LayoutInflater.from(context);
 	}//end constructor
 	//getCount method
@@ -40,7 +40,7 @@ public class DivisionBaseAdapter extends BaseAdapter{
 	 */
 	@Override
 	public int getCount() {
-		return listOfDivObjects.size();
+		return mListOfDivObjects.size();
 	}//end getCount method
 	//getItem method
 	/**
@@ -50,7 +50,7 @@ public class DivisionBaseAdapter extends BaseAdapter{
 	 */
 	@Override
 	public Object getItem(int position) {
-		return listOfDivObjects.get(position);
+		return mListOfDivObjects.get(position);
 	}//end getItem
 	//getItemId method
 	/**
@@ -82,7 +82,7 @@ public class DivisionBaseAdapter extends BaseAdapter{
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}//end if-else statement
-		holder.name.setText(listOfDivObjects.get(position).getName());
+		holder.name.setText(mListOfDivObjects.get(position).getName());
 		return convertView;
 	}//end getView method
 	//static class used to hold all the views in the custom row view

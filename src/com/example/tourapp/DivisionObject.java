@@ -1,5 +1,5 @@
 package com.example.tourapp;
-//Fatima used the website below for guidance on make DivisionObject parcelable
+//Fatima used the website below for guidance on making DivisionObject parcelable
 //so that it could be passed through an intent
 //http://prasanta-paul.blogspot.com/2010/06/android-parcelable-example.html
 
@@ -9,18 +9,18 @@ import android.os.Parcelable;
 //DivisionObject object which holds all the information on a single division.
 /**
  * an object that holds all the information on a single division.  Provides simple get methods
- * for all parameters.  Set methods are not provided since the data should not be change within
+ * for all variables.  Set methods are not provided since the data should not be changed within
  * the app.
  */
 public class DivisionObject implements Parcelable{
-	int id;
-	String name;
-	String description;
-	String imageName;
-	String phone;
-	String email;
-	String website;
-	String building;
+	private int id;
+	private String name;
+	private String description;
+	private String imageName;
+	private String phone;
+	private String email;
+	private String website;
+	private String building;
 	//Constructor
 	/**
 	 * Constructor

@@ -9,17 +9,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.widget.Button;
-
+/**
+ * Beginning activity for the tour app.  This activity creates the database from the text file, generates
+ * DivisionObject 's and PlaceObject 's using data from the database, and adds those objects to two ArrayLists.
+ * These lists are passed along to each activity through intents so the data can be called from anywhere.
+ * @author Fatima Padojino
+ *
+ */
 public class TourApp extends Activity {
-	
-	public Database database = new Database(this, "database.txt", "fullDatabase.db");
+	//create database from text file
+	private Database database = new Database(this, "database.txt", "fullDatabase.db");
+	//name of table that holds place info in the database
 	private static String TABLE_NAME1 = "Place";
+	//name of table that holds division info in the database
 	private static String TABLE_NAME2 = "Division";
+	//names of fields in the place table and division table- will be used when creating the cursor over the table in the databases
 	private static String[] PLACEFROM = {"_id", "name", "lon", "lat", "description", "directionsFromPrevious", "directionsToNext", "imageName"};
 	private static String[] DIVISIONFROM = {"_id", "name", "description", "imageName", "phone", "email", "website","building"};
-
-	public ArrayList<DivisionObject> listOfDivisions;
-	public ArrayList<PlaceObject> listOfPlaces;
+	//ArrayLists to hold Division and Place data objects - empty at first
+	private ArrayList<DivisionObject> mListOfDivisions;
+	private ArrayList<PlaceObject> mListOfPlaces;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -30,8 +39,8 @@ public class TourApp extends Activity {
 		final Cursor divisionCursor = getDBContents(TABLE_NAME2, DIVISIONFROM);
 		int numOfDivisions = divisionCursor.getCount();
 		int numOfPlaces = placeCursor.getCount();
-		listOfDivisions = new ArrayList<DivisionObject>(numOfDivisions);
-		listOfPlaces = new ArrayList<PlaceObject>(numOfPlaces);
+		mListOfDivisions = new ArrayList<DivisionObject>(numOfDivisions);
+		mListOfPlaces = new ArrayList<PlaceObject>(numOfPlaces);
 		
 		//use cursor to add DivisionObjects to ArrayList
 		while(divisionCursor.moveToNext()){
@@ -44,7 +53,7 @@ public class TourApp extends Activity {
 			String website = divisionCursor.getString(6);
 			String building = divisionCursor.getString(7);
 			DivisionObject objectToAdd = new DivisionObject(ID, name, description, imageName, phone, email, website, building);
-			listOfDivisions.add(objectToAdd);
+			mListOfDivisions.add(objectToAdd);
 		}//end while loop for iterating through the cursor
 		
 		//use cursor to add PlaceObjects to ArrayList
@@ -58,7 +67,7 @@ public class TourApp extends Activity {
 			String dirToNext = placeCursor.getString(6);
 			String imageName = placeCursor.getString(7);
 			PlaceObject objectToAdd = new PlaceObject(ID, name, lon, lat, description, dirFromPrev, dirToNext, imageName);
-			listOfPlaces.add(objectToAdd);
+			mListOfPlaces.add(objectToAdd);
 		}//end while loop for iterating through the cursor
 
 		Button onLocation = (Button) findViewById(R.id.button_on_location);
@@ -66,8 +75,8 @@ public class TourApp extends Activity {
 			public void onClick(View v){
 				//start new activity : OnLocationMenu.class
 				Intent intent = new Intent(TourApp.this, OnLocationMenu.class);
-				intent.putParcelableArrayListExtra("com.example.tourapp.divisionArrayList", listOfDivisions);
-				intent.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", listOfPlaces);
+				intent.putParcelableArrayListExtra("com.example.tourapp.divisionArrayList", mListOfDivisions);
+				intent.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
 				startActivity(intent);			
 			}
 		});	
@@ -77,13 +86,14 @@ public class TourApp extends Activity {
 			public void onClick(View v){
 				//start new activity : OffLocationMenu.class
 				Intent intent = new Intent(TourApp.this, OffLocationMenu.class);
-				intent.putParcelableArrayListExtra("com.example.tourapp.divisionArrayList", listOfDivisions);
-				intent.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", listOfPlaces);
+				intent.putParcelableArrayListExtra("com.example.tourapp.divisionArrayList", mListOfDivisions);
+				intent.putParcelableArrayListExtra("com.example.tourapp.placeArrayList", mListOfPlaces);
 				startActivity(intent);			
 			}
 		});	
 	}
 	
+	//creates a cursor over a specific table in the database
 	private Cursor getDBContents(String tablename, String[] from){
 		SQLiteDatabase db = database.getReadableDatabase();
 		Cursor cursor = db.query(tablename, from, null, null, null, null, null, null);

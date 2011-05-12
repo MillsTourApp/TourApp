@@ -20,7 +20,7 @@ public class Division extends Activity{
 	/**
 	 * holds package name used to find resource id from a String imageName
 	 */
-	final String PACKAGE_NAME = "com.example.tourapp";
+	private final String PACKAGE_NAME = "com.example.tourapp";
 	
 	//onCreate method that gets data from an intent and sets the content of the various views with
 	//data from that intent
