@@ -18,6 +18,12 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
+/**
+ * Class for taking the guided tour. Includes a map view,
+ * a description view, and buttons for next and previous
+ * location as well as a button for returning to the main
+ * menu.
+ */
 public class GuidedTour extends MapActivity implements OnClickListener {
 	//map fields
 	private MapView mMapView;
@@ -37,6 +43,9 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	private static final int MAP_ZOOM = 18;
 	private static final double NORMALIZE_COORDINATES = 1E6;
 
+	/**
+	 * Called when the activity is first created.
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
