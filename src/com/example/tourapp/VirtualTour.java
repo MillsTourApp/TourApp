@@ -117,7 +117,7 @@ public class VirtualTour extends Activity{
 			return imageView;
 		}//getView
 	}//Image Adapter
-	
+
 	/**
 	 * this will find the specific object we that has been clicked
 	 * @param position
