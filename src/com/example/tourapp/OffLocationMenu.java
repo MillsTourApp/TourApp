@@ -7,10 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+/**
+ *The start of the OffLocationMenu extending an activity and implementing the OnClickListner which other classes use.
+ * @author nwashington
+ *
+ */
 public class OffLocationMenu extends Activity implements OnClickListener {
 	public ArrayList<DivisionObject> mListOfDivisions;
 	public ArrayList<PlaceObject> mListOfPlaces;
 
+	/**
+	 * onCreate method is created
+	 * @param savedInstanceState
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
