@@ -21,6 +21,10 @@ import com.androidmapballoons.library.BalloonItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
+/**
+ * Manages the overlays used in the GuidedTour class
+ * @author creator of androidballoonslibrary
+ */
 public class MyItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
 	//ArrayLists for overlayItems that will be mapped
 	private ArrayList<OverlayItem> m_overlays = new ArrayList<OverlayItem>();
