@@ -6,7 +6,15 @@ import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Activity class that displays information on a single place object.
+ * @see PlaceObject
+ */
 public class Place extends Activity {
+	/**
+	 * Gets the data from an intent and sets the content of the various views
+	 * with data from that intent.
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,5 +35,5 @@ public class Place extends Activity {
 		name.setText(placeName);
 		description.setText(placeDescription);
 		image.setImageResource(resId);
-	}
-}
+	}//onCreate
+}//Place
