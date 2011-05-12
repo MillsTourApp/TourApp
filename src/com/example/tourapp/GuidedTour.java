@@ -77,7 +77,7 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 						(int)(currentPlace.getLon()*NORMALIZE_COORDINATES)
 				)
 		);
-		//view stuff		
+		//Views
 		mTitleView = (TextView) findViewById(R.id.title_view);
 		mTitleView.setText(currentPlace.getId() + ". " + currentPlace.getName());
 		mDescView = (TextView) findViewById(R.id.desc_view);
