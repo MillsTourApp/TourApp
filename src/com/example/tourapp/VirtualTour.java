@@ -137,16 +137,17 @@ public class VirtualTour extends Activity{
 	 * @param position index of the desired picture
 	 * @return the image to be shown
 	 */
-	public int findImageName(int position){
+	private int findImageName(int position){
 		for (PlaceObject obj:listOfPlaces){
 			if(obj.getId()-1 == position){
-				return findImageName(obj);
+				return findImage(obj);
 			}//if
 		}//for
 		return 0; //image of that position was not found
 	}//public findImageName
 
-	private int findImageName(PlaceObject obj){
+	//Loads an image from the image's name
+	private int findImage(PlaceObject obj){
 		int resId = this.getResources().getIdentifier(obj.getImageName(), "drawable", "com.example.tourapp");
 		return resId;
 	}//private findImageName
