@@ -2,14 +2,12 @@ package com.example.tourapp;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -44,7 +42,7 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 	private static final double NORMALIZE_COORDINATES = 1E6;
 
 	/**
-	 * Called when the activity is first created.
+	 * Initializes map, finds user location, creates and maps overlays
 	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -71,10 +69,8 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 
 		//Add overlays to list of overlays
 		mMapOverlays.add(mItemizedOverlay);
+		
 		//create new GeoPoint from currentPlace and set focus of map to that point
-		//probably inefficient to create another GeoPoint; we should modify place
-		//to have a GeoPoint member variable.  We'd have to extend GeoPoint to make it
-		//Parcelable
 		mController.animateTo(
 				new GeoPoint(
 						(int)(currentPlace.getLat()*NORMALIZE_COORDINATES ),
@@ -91,16 +87,16 @@ public class GuidedTour extends MapActivity implements OnClickListener {
 		findViewById(R.id.button_main_from_tour).setOnClickListener(this);
 	} //onCreate
 
-	//helper methods
-	/** Find and initialize the map view. (From Hello Android tutorial)*/
+	//Helper methods
+	//Find and initialize the map view. From Hello Android tutorial
 	private void initMapView() {
 		mMapView = (MapView) findViewById(R.id.mapview);
 		mController = mMapView.getController();
 		mMapView.setSatellite(true);
 		mMapView.setBuiltInZoomControls(true);
 	} //initMapView
-
-	/** Start tracking the position on the map. (From Hello Android tutorial)*/
+	
+	// Start tracking the position on the map. From Hello Android tutorial
 	private void initMyLocation() {
 		final MyLocationOverlay overlay = new MyLocationOverlay(this, mMapView);
 		overlay.enableMyLocation();
